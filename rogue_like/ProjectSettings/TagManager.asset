@@ -39,7 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Player
   m_SortingLayers:
   - name: terrain
     uniqueID: 2425651459
