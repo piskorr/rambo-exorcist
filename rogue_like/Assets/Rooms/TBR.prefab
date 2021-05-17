@@ -5167,6 +5167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2879244789166621593}
+  - component: {fileID: 2862963419207898056}
   m_Layer: 0
   m_Name: TBR
   m_TagString: Untagged
@@ -5189,3 +5190,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2862963419207898056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879244789166621594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63027cf439e373843bd4bc340ad41f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 8197527448178566159, guid: c321ca36be3f44b468949a954090f4de, type: 3}
+  spawnArea: {x: 8, y: 8}
