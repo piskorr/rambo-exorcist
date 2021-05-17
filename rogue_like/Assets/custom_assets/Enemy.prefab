@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8197527448178566159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.12, y: -0.68, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8197527448554408626}
   - {fileID: 8197527448343037900}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8197527448343037901}
   - component: {fileID: 8197527448343037902}
   m_Layer: 0
-  m_Name: enemy_collider
+  m_Name: enemyCollider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0805977, y: 0.10477692}
+  m_Offset: {x: -0.05150649, y: 0.09507987}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -157,7 +157,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5808922, y: 0.66148984}
+  m_Size: {x: 0.5227099, y: 0.64209574}
   m_EdgeRadius: 0
 --- !u!114 &8197527448343037902
 MonoBehaviour:
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 8197527448432727550}
   m_Layer: 0
   m_Name: hitBox
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8197527448432727548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.004, y: -0.024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8197527448178566155}
@@ -215,9 +215,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13701594, y: 0.11283673}
+  m_Offset: {x: -0.07031405, y: 0.112835765}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.40859205
 --- !u!1 &8197527448554408625
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 8197527448554408626}
   - component: {fileID: 8197527448554408627}
   m_Layer: 0
-  m_Name: enemy_sprites
+  m_Name: enemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
