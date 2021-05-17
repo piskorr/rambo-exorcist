@@ -1732,7 +1732,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.71875}
@@ -4529,6 +4529,9 @@ MonoBehaviour:
   gameCamera: {fileID: 519420031}
   characterSpeed: 2.5
   characterFacingRight: 1
+  health: 0
+  maxHealth: 100
+  healthBar: {fileID: 0}
 --- !u!61 &1403097629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4752,7 +4755,7 @@ PrefabInstance:
     - target: {fileID: 2577585254963922476, guid: fb2df5b680b64b449a78162ebcd98e97,
         type: 3}
       propertyPath: m_BodyType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2577585254963922479, guid: fb2df5b680b64b449a78162ebcd98e97,
         type: 3}

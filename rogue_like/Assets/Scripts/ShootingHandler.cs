@@ -11,6 +11,7 @@ public class ShootingHandler : MonoBehaviour
     public float fireRate = 0.5f;    
     public float minimumShootAngle = 0;
     public float maximumShootAngle = 0;
+    public int weaponDamage = 0;
     [SerializeField]type gunType;
     public Animator weaponAnimator;
     
@@ -46,7 +47,8 @@ public class ShootingHandler : MonoBehaviour
     void ShootBullet()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0,0,transform.eulerAngles.z + Random.Range(minimumShootAngle,maximumShootAngle)));
-        
+        bullet.GetComponent<BulletHandler>().setDmg(weaponDamage);
+
         Vector3 velocity = bullet.transform.rotation * Vector3.right;
         Rigidbody2D rigidbody2D = bullet.GetComponent<Rigidbody2D>();
 		rigidbody2D.AddForce(velocity * bulletForce);

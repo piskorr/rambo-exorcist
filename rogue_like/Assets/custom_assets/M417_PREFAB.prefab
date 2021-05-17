@@ -55,6 +55,7 @@ MonoBehaviour:
   fireRate: 1
   minimumShootAngle: 0
   maximumShootAngle: 0
+  weaponDamage: 10
   gunType: 1
   weaponAnimator: {fileID: 4872882299161594908}
 --- !u!95 &4872882299161594908
