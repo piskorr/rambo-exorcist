@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public Camera gameCamera;
     public float characterSpeed;
     public bool characterFacingRight = true;
+    public int health;
+    public int maxHealth = 100;
+    public HealthBar healthBar;
 
     private SpriteRenderer sprite;
     private Rigidbody2D rigidbody2D;
@@ -20,6 +23,8 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        health = maxHealth;
+        healthBar.SetMaxhealth(maxHealth);
     }
 
 
@@ -79,4 +84,12 @@ public class PlayerController : MonoBehaviour
 		
 	}
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Attack")
+        {
+            health -= 10;
+            healthBar.SetHealth(health);
+        }
+    }
 }
