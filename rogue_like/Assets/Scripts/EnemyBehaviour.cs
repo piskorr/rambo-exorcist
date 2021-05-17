@@ -14,12 +14,12 @@ public class EnemyBehaviour : MonoBehaviour
     public int maxHealth = 20;
     public int health;
     public GameObject body;
+    public Animator animator;
     #endregion
 
     #region Private Variables
     private RaycastHit2D hit;
     private Transform target;
-    private Animator anim;
     private float distance;
     private bool attackMode;
     private bool inRange;
@@ -30,7 +30,6 @@ public class EnemyBehaviour : MonoBehaviour
     void Awake()
     {
         intTimer = timer;
-        anim = GetComponent<Animator>();
         health = maxHealth;
     }
 
@@ -70,29 +69,21 @@ public class EnemyBehaviour : MonoBehaviour
         if(cooling)
         {
             Cooldown();
-            anim.SetBool("Attack", false);
+            //animator.SetBool("isAttacking", false);
         }
     }
 
     void Move()
     {
         Flip();
-        anim.SetBool("canWalk", true);
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy_attack"))
-        {
-            Vector2 targetPosition = new Vector2(target.position.x, target.position.y);
-
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        }
+        Vector2 targetPosition = new Vector2(target.position.x, target.position.y);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 
     void Attack()
     {
-        //timer = intTimer;
+        animator.SetBool("isAttacking", true);
         attackMode = true;
-
-        anim.SetBool("canWalk", false);
-        anim.SetBool("Attack", true);
     }
 
     void Cooldown()
@@ -107,9 +98,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     void StopAttack()
     {
+        animator.SetBool("isAttacking", false);
         cooling = false;
         attackMode = false;
-        anim.SetBool("Attack", false);
     }
 
 
