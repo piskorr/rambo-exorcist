@@ -52,8 +52,5 @@ public class ShootingHandler : MonoBehaviour
         Vector3 velocity = bullet.transform.rotation * Vector3.right;
         Rigidbody2D rigidbody2D = bullet.GetComponent<Rigidbody2D>();
 		rigidbody2D.AddForce(velocity * bulletForce);
-
-        // Rigidbody2D rigidbody2D = bullet.GetComponent<Rigidbody2D>();
-        // rigidbody2D.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
     }
 }

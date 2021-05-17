@@ -27,6 +27,15 @@ public class BulletHandler : MonoBehaviour
     }
 
 
+    void OnTriggerStay2D(Collider2D collider)
+    {
+         if(collider.tag == "Obstacle")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     void hitEffectPlay()
     {
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
