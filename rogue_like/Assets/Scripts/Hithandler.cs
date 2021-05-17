@@ -8,7 +8,7 @@ public class Hithandler : MonoBehaviour
     {
         if (trig.tag == "Bullet")
         {
-            GetComponentInParent<EnemyBehaviour>().OnHitEffect();
+            GetComponentInParent<EnemyBehaviour>().OnHitEffect(trig.GetComponentInParent<BulletHandler>().getDmg());
         }
     }
 }

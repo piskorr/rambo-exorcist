@@ -88,7 +88,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Attack()
     {
-        timer = intTimer;
+        //timer = intTimer;
         attackMode = true;
 
         anim.SetBool("canWalk", false);
@@ -123,10 +123,10 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
     
-    public void OnHitEffect()
+    public void OnHitEffect(int dmg)
     {
         
-        health -= 5;
+        health -= dmg;
         if (health <= 0)
             Destroy(gameObject);
     }
@@ -144,6 +144,11 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         transform.eulerAngles = rotation;
+    }
+
+    public void TriggerCooldown()
+    {
+        cooling = true;
     }
 
     void RaycastDebugger()

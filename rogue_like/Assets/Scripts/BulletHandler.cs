@@ -6,7 +6,7 @@ public class BulletHandler : MonoBehaviour
 {
 
     public GameObject hitEffect;
-    
+    private int dmg = 1;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -34,6 +34,15 @@ public class BulletHandler : MonoBehaviour
         Destroy(effect, 5f);
     }
 
+    public int getDmg()
+    {
+        return dmg;
+    }
+
+    public void setDmg ( int dmg)
+    {
+        this.dmg = dmg;
+    }
 
     private void OnBecameInvisible()
     {
