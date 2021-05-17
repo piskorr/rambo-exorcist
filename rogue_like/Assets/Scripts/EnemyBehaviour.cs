@@ -123,10 +123,10 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
     
-    public void OnHitEffect()
+    public void OnHitEffect(int dmg)
     {
         
-        health -= 5;
+        health -= dmg;
         if (health <= 0)
             Destroy(gameObject);
     }
