@@ -43,8 +43,11 @@ TagManager:
   - 
   - Player
   m_SortingLayers:
-  - name: terrain_behing
+  - name: terrain_behind
     uniqueID: 2425651459
+    locked: 0
+  - name: terrain_behind_not_lit
+    uniqueID: 227625289
     locked: 0
   - name: objects
     uniqueID: 3635803185
