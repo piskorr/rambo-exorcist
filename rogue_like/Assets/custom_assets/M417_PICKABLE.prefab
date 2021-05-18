@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 582521064276984925}
   - component: {fileID: 582521064276984924}
   m_Layer: 0
-  m_Name: m417
+  m_Name: M417_PICKABLE
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

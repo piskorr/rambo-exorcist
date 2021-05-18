@@ -43,15 +43,15 @@ TagManager:
   - 
   - Player
   m_SortingLayers:
-  - name: terrain
+  - name: terrain_behing
     uniqueID: 2425651459
     locked: 0
-  - name: character
-    uniqueID: 4250941897
-    locked: 0
-  - name: 
-    uniqueID: 4189426099
+  - name: objects
+    uniqueID: 3635803185
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: terrain_front
+    uniqueID: 3564644197
     locked: 0

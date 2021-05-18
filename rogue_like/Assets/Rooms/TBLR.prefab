@@ -4234,6 +4234,8 @@ MonoBehaviour:
   enemies:
   - {fileID: 8197527448178566159, guid: c321ca36be3f44b468949a954090f4de, type: 3}
   spawnArea: {x: 8, y: 8}
+  enemyMaxNumber: 10
+  enemyMinNumber: 5
 --- !u!1 &5821807631710446692
 GameObject:
   m_ObjectHideFlags: 0
