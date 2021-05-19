@@ -58,3 +58,6 @@ TagManager:
   - name: terrain_front
     uniqueID: 3564644197
     locked: 0
+  - name: crosshair_layer
+    uniqueID: 4184990255
+    locked: 0
