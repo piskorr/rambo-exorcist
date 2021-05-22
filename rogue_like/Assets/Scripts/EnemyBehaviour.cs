@@ -31,6 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         intTimer = timer;
         health = maxHealth;
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().transform;
     }
 
     // Update is called once per frame
@@ -108,7 +109,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (trig.gameObject.tag == "Player")
         {
-            target = trig.transform;
             inRange = true;
             
         }
@@ -116,7 +116,7 @@ public class EnemyBehaviour : MonoBehaviour
     
     public void OnHitEffect(int dmg)
     {
-        
+        inRange = true;
         health -= dmg;
         if (health <= 0)
             Destroy(gameObject);
