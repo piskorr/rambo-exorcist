@@ -20,6 +20,13 @@ public class PickUpActionHandler : MonoBehaviour
     }
 
 
+    void Update()
+    {
+        if (pickUpAllowed && Input.GetKeyDown(KeyCode.F))
+            PickUp();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name.Equals("Player"))
@@ -27,10 +34,6 @@ public class PickUpActionHandler : MonoBehaviour
             pickUpText.gameObject.SetActive(true);
             pickUpAllowed = true;
 
-            if (weaponHolderController.AddWeapon(weaponPrefab))
-            {
-                gameObject.SetActive(false);
-            }
         }
     }
 
@@ -40,6 +43,17 @@ public class PickUpActionHandler : MonoBehaviour
         {
             pickUpText.gameObject.SetActive(false);
             pickUpAllowed = false;
+
         }
     }
+
+
+    private void PickUp()
+    {
+        weaponHolderController.PickUpWeapon(weaponPrefab);
+        gameObject.SetActive(false);
+        Destroy(gameObject, 3f);
+
+    }
+
 }
