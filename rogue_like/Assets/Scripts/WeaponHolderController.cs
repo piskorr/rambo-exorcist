@@ -66,7 +66,7 @@ public class WeaponHolderController : MonoBehaviour
     }
 
 
-    public bool AddWeapon(GameObject weaponPrefab)
+    public bool PickUpWeapon(GameObject weaponPrefab)
     {
         if (currentWeaponCount < totalWeaponCount)
         {
@@ -85,6 +85,9 @@ public class WeaponHolderController : MonoBehaviour
                     return true;
                 }
             }
+        }
+        else{
+            
         }
 
         return false;
