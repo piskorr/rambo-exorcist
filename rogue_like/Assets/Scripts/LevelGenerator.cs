@@ -6,6 +6,7 @@ public class LevelGenerator : MonoBehaviour
 {
     public GameObject T, TR, TL, TBR, TBL, TBRL, TRL, TB, BLR, BL, BR, B, L, LR, R;
     public GameObject corridorHorizontal, corridorVertical;
+    public GameObject EmptyR, EmptyT, EmptyB, EmptyL, bossStuff, shopStuff;
     public int gridX, gridY, numberOfRooms;
     int[,] map;
 
@@ -63,6 +64,15 @@ public class LevelGenerator : MonoBehaviour
         return num;
     }
 
+    void spawnShop()
+    {
+
+    }
+    void spawnBoss()
+    {
+        int side = (int)Random.Range(1,4);
+
+    }
     void spawnCorridor(int row, int column)
     {
         int centerX = gridX / 2;
