@@ -9,6 +9,7 @@ TagManager:
   - Crate
   - Bullet
   - Attack
+  - PickUpText
   layers:
   - Default
   - TransparentFX

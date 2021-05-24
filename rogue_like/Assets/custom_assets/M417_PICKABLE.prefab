@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 582521064276984931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.31, y: -0.56, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 992094130757708210, guid: 0c4aa311173cac447b475efc5dd902f2,
     type: 3}
+  pickUpText: {fileID: 8243638578871952260, guid: e11dff5e52fae1f4c902edcfb48090bc,
+    type: 3}
 --- !u!61 &582521064276984924
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108,7 +110,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.019369185, y: -0.01076065}
