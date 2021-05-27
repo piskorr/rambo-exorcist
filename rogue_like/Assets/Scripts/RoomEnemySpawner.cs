@@ -7,8 +7,8 @@ public class RoomEnemySpawner : MonoBehaviour
 
     public GameObject[] enemies;
     public Vector2 spawnArea;
-    public int enemyMaxNumber = 5;
-    public int enemyMinNumber = 1;
+    public int enemyMaxNumber = 0;
+    public int enemyMinNumber = 0;
 
     // Start is called before the first frame update
     void Start()
