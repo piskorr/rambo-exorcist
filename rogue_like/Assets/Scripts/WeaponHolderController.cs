@@ -27,16 +27,16 @@ public class WeaponHolderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentWeaponIndex = 0;
-            ChangeWeapon();       
+            ChangeWeapon();
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentWeaponIndex = 1;
             ChangeWeapon();
-        }        
+        }
     }
 
 
@@ -45,24 +45,31 @@ public class WeaponHolderController : MonoBehaviour
         equippedWeapon = weapons[currentWeaponIndex];
         DeactivateOtherWeapons();
 
-        if(weapons[currentWeaponIndex] != null)
+        if (weapons[currentWeaponIndex] != null)
             weapons[currentWeaponIndex].SetActive(true);
     }
 
 
     private void DeactivateOtherWeapons()
     {
-        for(int i = 0; i  < totalWeaponCount; i++)
+        for (int i = 0; i < totalWeaponCount; i++)
         {
-            if( i != currentWeaponIndex)
+            if (i != currentWeaponIndex)
             {
-                if(weapons[i] != null)
+                if (weapons[i] != null)
                 {
                     weapons[i].SetActive(false);
                 }
-                
+
             }
         }
+    }
+
+
+    private void deleteCurrentWeapon()
+    {
+        Destroy(weapons[currentWeaponIndex]);
+        weapons[currentWeaponIndex] = null;
     }
 
 
@@ -79,15 +86,30 @@ public class WeaponHolderController : MonoBehaviour
                     currentWeaponCount++;
 
                     weapon.transform.SetParent(weaponHolder.transform);
-                    weapon.transform.localScale = playerScale;                 
+                    weapon.transform.localScale = playerScale;
 
                     weapon.SetActive(false);
                     return true;
                 }
             }
         }
-        else{
-            
+        else
+        {
+
+            GameObject pickableWeapon = weapons[currentWeaponIndex].GetComponent<ItemDropHandler>().getPickablePrefab();
+            GameObject weaponPickable = Instantiate(pickableWeapon, weaponHolder.transform.position, Quaternion.identity);
+            deleteCurrentWeapon();
+
+            GameObject weapon = Instantiate(weaponPrefab, weaponHolder.transform.position, weaponHolder.transform.rotation);
+            weapons[currentWeaponIndex] = weapon;
+            currentWeaponCount++;
+
+            weapon.transform.SetParent(weaponHolder.transform);
+            weapon.transform.localScale = playerScale;
+
+            weapon.SetActive(false);
+            return true;
+
         }
 
         return false;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4597867309988699596}
   - component: {fileID: 3318123556134485952}
   - component: {fileID: 4872882299161594908}
+  - component: {fileID: 483548511225334755}
   m_Layer: 7
   m_Name: M417_PREFAB
   m_TagString: Untagged
@@ -77,6 +78,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &483548511225334755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992094130757708210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a388040741de134bbd43626c3f83f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickablePrefab: {fileID: 582521064276984931, guid: 090e3e9a585a1824f834976c48315057,
+    type: 3}
 --- !u!1 &2795955843005581577
 GameObject:
   m_ObjectHideFlags: 0

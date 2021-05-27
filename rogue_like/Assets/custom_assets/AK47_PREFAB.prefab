@@ -205,6 +205,8 @@ GameObject:
   - component: {fileID: 682494609706849153}
   - component: {fileID: 1781742122428510605}
   - component: {fileID: 8459146896930902791}
+  - component: {fileID: 6748649473416076795}
+  - component: {fileID: 7781646796397406436}
   m_Layer: 7
   m_Name: AK47_PREFAB
   m_TagString: Untagged
@@ -271,6 +273,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6748649473416076795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283752919416956927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a388040741de134bbd43626c3f83f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickablePrefab: {fileID: 3515636414588971476, guid: 2bfba3aa4ffa0ec42a2dadc918873598,
+    type: 3}
+--- !u!114 &7781646796397406436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283752919416956927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a388040741de134bbd43626c3f83f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickablePrefab: {fileID: 3515636414588971476, guid: 2bfba3aa4ffa0ec42a2dadc918873598,
+    type: 3}
 --- !u!1 &7992502525227715340
 GameObject:
   m_ObjectHideFlags: 0

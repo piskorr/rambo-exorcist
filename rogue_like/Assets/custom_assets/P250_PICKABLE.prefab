@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4244991081213969793}
   - component: {fileID: 4244991081213969806}
   m_Layer: 0
-  m_Name: AK47_PICKABLE (1)
+  m_Name: P250_PICKABLE
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 6493375746050401166, guid: c1dce2792f307324ea589b8839a0d738,
+    type: 3}
+  pickUpText: {fileID: 8243638578871952260, guid: e11dff5e52fae1f4c902edcfb48090bc,
     type: 3}
 --- !u!61 &4244991081213969806
 BoxCollider2D:

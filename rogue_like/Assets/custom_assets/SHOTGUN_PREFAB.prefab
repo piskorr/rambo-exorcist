@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 6426610718262685427}
   - component: {fileID: 5254953477335043327}
   - component: {fileID: 1829004623180190237}
+  - component: {fileID: 5614538652632457620}
   m_Layer: 7
   m_Name: SHOTGUN_PREFAB
   m_TagString: Untagged
@@ -353,3 +354,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5614538652632457620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7720770410598505101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a388040741de134bbd43626c3f83f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickablePrefab: {fileID: 7917972485673726009, guid: 61f3472160f086d43b463101d0e9ca48,
+    type: 3}
