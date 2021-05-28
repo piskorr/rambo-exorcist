@@ -6,11 +6,14 @@ public class WeaponHolderController : MonoBehaviour
 {
 
     public int totalWeaponCount = 2;
+    public int maxGrenadeCount = 3;
+    public GameObject grenadePrefab;
     public GameObject weaponHolder;
     public GameObject[] weapons;
 
     private int currentWeaponIndex;
     private int currentWeaponCount;
+    private int currentGrenadeCount;
     private GameObject equippedWeapon;
     private Vector3 playerScale;
 
@@ -21,14 +24,24 @@ public class WeaponHolderController : MonoBehaviour
         weapons = new GameObject[totalWeaponCount];
         currentWeaponIndex = 0;
         currentWeaponCount = 0;
+        currentGrenadeCount = 0;
         playerScale = GetComponentInParent<Transform>().localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if(currentGrenadeCount == 0)
         {
+            if (grenadePrefab.active)
+                    grenadePrefab.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.G) && currentGrenadeCount > 0)
+        {
+            EquipGrenade();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {  
             currentWeaponIndex = 0;
             ChangeWeapon();
         }
@@ -37,6 +50,15 @@ public class WeaponHolderController : MonoBehaviour
             currentWeaponIndex = 1;
             ChangeWeapon();
         }
+        
+    }
+
+
+    private void EquipGrenade()
+    {
+        DeactivateAllWeapons();
+        if(currentGrenadeCount > 0)
+            grenadePrefab.SetActive(true);
     }
 
 
@@ -44,6 +66,10 @@ public class WeaponHolderController : MonoBehaviour
     {
         equippedWeapon = weapons[currentWeaponIndex];
         DeactivateOtherWeapons();
+
+        if (grenadePrefab.active)
+                    grenadePrefab.SetActive(false);
+
 
         if (weapons[currentWeaponIndex] != null)
             weapons[currentWeaponIndex].SetActive(true);
@@ -66,10 +92,33 @@ public class WeaponHolderController : MonoBehaviour
     }
 
 
+    private void DeactivateAllWeapons()
+    {
+        for (int i = 0; i < totalWeaponCount; i++)
+        {
+            if (weapons[i] != null)
+            {
+                weapons[i].SetActive(false);
+            }
+        }
+    }
+
+
     private void deleteCurrentWeapon()
     {
         Destroy(weapons[currentWeaponIndex]);
         weapons[currentWeaponIndex] = null;
+    }
+
+
+    public bool AddGrenade()
+    {
+        if(currentGrenadeCount < maxGrenadeCount)
+        {
+            currentGrenadeCount++;
+            return true;
+        }
+        return false;
     }
 
 
@@ -113,5 +162,18 @@ public class WeaponHolderController : MonoBehaviour
         }
 
         return false;
+    }
+
+
+    public void DecreaseGrenadeCount()
+    {
+        if(currentGrenadeCount > 0)
+            currentGrenadeCount--;
+    }
+
+
+    public bool isGrenadeFull()
+    {
+        return currentGrenadeCount >= maxGrenadeCount;
     }
 }

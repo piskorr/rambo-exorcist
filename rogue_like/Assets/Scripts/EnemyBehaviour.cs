@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,6 +75,11 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    internal void GetBlastDamage()
+    {
+        Destroy(gameObject);
+    }
+
     void Move()
     {
         Flip();
@@ -83,7 +89,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Attack()
     {
-        animator.SetBool("isAttacking", true);
+        //animator.SetBool("isAttacking", true);
         attackMode = true;
     }
 
@@ -99,7 +105,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void StopAttack()
     {
-        animator.SetBool("isAttacking", false);
+        //animator.SetBool("isAttacking", false);
         cooling = false;
         attackMode = false;
     }
