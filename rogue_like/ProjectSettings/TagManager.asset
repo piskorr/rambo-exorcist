@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - Attack
   - PickUpText
+  - Grenade
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - 
   - CollideLayer
-  - 
+  - Enemy
   - 
   - 
   - 

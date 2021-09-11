@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 7642738029326341440}
   - component: {fileID: 7642738029326341443}
   - component: {fileID: 5955992745288090239}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bulletCollider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

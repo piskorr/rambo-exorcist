@@ -46,7 +46,6 @@ public class PickUpActionHandler : MonoBehaviour
         weaponHolderController.PickUpWeapon(weaponPrefab);
         gameObject.SetActive(false);
         Destroy(gameObject, 3f);
-
     }
 
 }
