@@ -10,7 +10,7 @@ public class BulletHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.tag == "Obstacle")
+        if(collider.tag == "Obstacle" )
         {
             hitEffectPlay();
             Destroy(gameObject);
@@ -20,7 +20,7 @@ public class BulletHandler : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider)
     {
-         if(collider.tag == "Obstacle")
+         if(collider.tag == "Obstacle" || collider.tag == "Player")
         {
             Destroy(gameObject);
         }

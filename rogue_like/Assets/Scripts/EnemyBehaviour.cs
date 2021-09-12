@@ -11,26 +11,22 @@ public class EnemyBehaviour : MonoBehaviour
     public float rayCastLength;
     public float attackDistance;
     public float moveSpeed;
-    public float timer;
     public int maxHealth = 20;
     public int health;
     public GameObject body;
     public Animator animator;
     #endregion
 
-    #region Private Variables
-    private RaycastHit2D hit;
-    private Transform target;
-    private float distance;
-    private bool attackMode;
-    private bool inRange;
-    private bool cooling;
-    private float intTimer;
+    #region Protected Variables
+    protected RaycastHit2D hit;
+    protected Transform target;
+    protected float distance;
+    protected bool attackMode;
+    protected bool inRange;
     #endregion
 
     void Awake()
     {
-        intTimer = timer;
         health = maxHealth;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().transform;
     }
@@ -54,24 +50,17 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
 
-    void EnemyLogic()
+    protected virtual void EnemyLogic()
     {
         distance = Vector2.Distance(transform.position, target.position);
+        Move();
         if (distance > attackDistance)
         {
-
-            Move();
-            StopAttack();
+            attackMode = false;
         }
         else if (distance < attackDistance)
         {
-            Attack();
-        }
-
-        if(cooling)
-        {
-            Cooldown();
-            //animator.SetBool("isAttacking", false);
+            attackMode = true;
         }
     }
 
@@ -80,34 +69,11 @@ public class EnemyBehaviour : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Move()
+    protected void Move()
     {
         Flip();
         Vector2 targetPosition = new Vector2(target.position.x, target.position.y);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-    }
-
-    void Attack()
-    {
-        //animator.SetBool("isAttacking", true);
-        attackMode = true;
-    }
-
-    void Cooldown()
-    {
-        timer -= Time.deltaTime;
-        if(timer<= 0 && cooling && attackMode)
-        {
-            cooling = false;
-            timer = intTimer;
-        }
-    }
-
-    void StopAttack()
-    {
-        //animator.SetBool("isAttacking", false);
-        cooling = false;
-        attackMode = false;
     }
 
 
@@ -116,7 +82,6 @@ public class EnemyBehaviour : MonoBehaviour
         if (trig.gameObject.tag == "Player")
         {
             inRange = true;
-            
         }
     }
     
@@ -128,7 +93,7 @@ public class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Flip()
+    protected void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
         if(transform.position.x < target.position.x)
@@ -143,10 +108,6 @@ public class EnemyBehaviour : MonoBehaviour
         transform.eulerAngles = rotation;
     }
 
-    public void TriggerCooldown()
-    {
-        cooling = true;
-    }
 
     void RaycastDebugger()
     {
