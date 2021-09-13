@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2380382588708093252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7394403548646613964}
+  m_Layer: 7
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7394403548646613964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2380382588708093252}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.51, y: -0.26, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7642738029495285382}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3765917628932973505
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +87,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4171059, y: 0.19533825}
   m_EdgeRadius: 0
+--- !u!1 &3920890656409820915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5941484766603985298}
+  m_Layer: 7
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5941484766603985298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3920890656409820915}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.46, y: -0.63, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7642738029495285382}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7642738029326341454
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,10 +236,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7642738029495285382}
   - component: {fileID: 7642738029495285383}
-  - component: {fileID: 7642738029495285380}
   - component: {fileID: 2004948968195087150}
   - component: {fileID: 5022752800257951681}
   - component: {fileID: 1362476228596103134}
+  - component: {fileID: 7809815540922192644}
   m_Layer: 0
   m_Name: GHOUL_ENEMY
   m_TagString: Untagged
@@ -203,6 +263,8 @@ Transform:
   - {fileID: 7642738029963002720}
   - {fileID: 7642738029798539598}
   - {fileID: 3151202367383697179}
+  - {fileID: 5941484766603985298}
+  - {fileID: 7394403548646613964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -227,30 +289,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7642738029495285380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7642738029495285378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2622c811e9a81a4082ece0dc2615170, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayCast: {fileID: 7642738029798539598}
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 2147483648
-  rayCastLength: 6
-  attackDistance: 1
-  moveSpeed: 1
-  timer: 3
-  maxHealth: 20
-  health: 20
-  body: {fileID: 7642738029326341454}
-  animator: {fileID: 1362476228596103134}
 --- !u!212 &2004948968195087150
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -335,6 +373,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7809815540922192644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642738029495285378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 068847da9947e97479b6836aa75a0cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayCast: {fileID: 7642738029798539598}
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  rayCastLength: 15
+  attackDistance: 10
+  moveSpeed: 1
+  maxHealth: 2000
+  health: 2000
+  body: {fileID: 7642738029326341454}
+  animator: {fileID: 1362476228596103134}
+  firePoint: {fileID: 7394403548646613964}
+  bulletPrefab: {fileID: 6597104270963785178, guid: f8985b9a11885e84480223827b18bcc7,
+    type: 3}
+  bulletForce: 120
+  fireRate: 3
+  damage: 10
+  ghostPrefab: {fileID: 8197527448178566159, guid: c321ca36be3f44b468949a954090f4de,
+    type: 3}
+  devilPrefab: {fileID: 962447109097914353, guid: a6566ac300f230647b8d4d59e27448b7,
+    type: 3}
+  spawnPoint: {fileID: 5941484766603985298}
 --- !u!1 &7642738029739968369
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
     protected bool inRange;
     #endregion
 
-    void Awake()
+    protected virtual void Awake()
     {
         health = maxHealth;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().transform;

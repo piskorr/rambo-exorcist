@@ -8,11 +8,9 @@ public class EnemyShooterBehaviour : EnemyBehaviour
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
     public float fireRate = 0.5f;
-    public float minimumShootAngle = 0;
-    public float maximumShootAngle = 0;
     public int damage = 10;
 
-    private float fireTimer = 0.0f;
+    protected float fireTimer = 0.0f;
 
     protected override void EnemyLogic()
     {
