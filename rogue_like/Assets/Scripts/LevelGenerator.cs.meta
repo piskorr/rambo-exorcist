@@ -3,7 +3,27 @@ guid: b5f16f2674f9e0947bb6fb823fdeec8d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - T: {instanceID: 0}
+  - TR: {instanceID: 0}
+  - TL: {instanceID: 0}
+  - TBR: {instanceID: 0}
+  - TBL: {instanceID: 0}
+  - TBRL: {instanceID: 0}
+  - TRL: {instanceID: 0}
+  - TB: {instanceID: 0}
+  - BLR: {instanceID: 0}
+  - BL: {instanceID: 0}
+  - BR: {instanceID: 0}
+  - B: {instanceID: 0}
+  - L: {instanceID: 0}
+  - LR: {instanceID: 0}
+  - R: {instanceID: 0}
+  - corridorHorizontal: {instanceID: 0}
+  - corridorVertical: {instanceID: 0}
+  - bossStuff: {instanceID: 0}
+  - shopStuff: {instanceID: 0}
+  - Room: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
