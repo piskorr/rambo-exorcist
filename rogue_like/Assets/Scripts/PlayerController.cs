@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private Vector3 characterMovement;    
     private Vector2 mousePosition;
-    private float lastDmgTime = 0;
-    private float invincibility = 1;
 
     void Start()
     {
@@ -86,11 +84,10 @@ public class PlayerController : MonoBehaviour
 		
 	}
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Attack" && Time.time-lastDmgTime>invincibility)
+        if (collision.tag == "Attack")
         {
-            lastDmgTime = Time.time;
             health -= 10;
             healthBar.SetHealth(health);
         }

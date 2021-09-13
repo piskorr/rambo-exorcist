@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,22 +10,26 @@ public class EnemyBehaviour : MonoBehaviour
     public float rayCastLength;
     public float attackDistance;
     public float moveSpeed;
+    public float timer;
     public int maxHealth = 20;
     public int health;
     public GameObject body;
     public Animator animator;
     #endregion
 
-    #region Protected Variables
-    protected RaycastHit2D hit;
-    protected Transform target;
-    protected float distance;
-    protected bool attackMode;
-    protected bool inRange;
+    #region Private Variables
+    private RaycastHit2D hit;
+    private Transform target;
+    private float distance;
+    private bool attackMode;
+    private bool inRange;
+    private bool cooling;
+    private float intTimer;
     #endregion
 
-    protected virtual void Awake()
+    void Awake()
     {
+        intTimer = timer;
         health = maxHealth;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().transform;
     }
@@ -50,30 +53,55 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
 
-    protected virtual void EnemyLogic()
+    void EnemyLogic()
     {
         distance = Vector2.Distance(transform.position, target.position);
-        Move();
         if (distance > attackDistance)
         {
-            attackMode = false;
+
+            Move();
+            StopAttack();
         }
         else if (distance < attackDistance)
         {
-            attackMode = true;
+            Attack();
+        }
+
+        if(cooling)
+        {
+            Cooldown();
+            //animator.SetBool("isAttacking", false);
         }
     }
 
-    internal void GetBlastDamage()
-    {
-        Destroy(gameObject);
-    }
-
-    protected void Move()
+    void Move()
     {
         Flip();
         Vector2 targetPosition = new Vector2(target.position.x, target.position.y);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+    }
+
+    void Attack()
+    {
+        animator.SetBool("isAttacking", true);
+        attackMode = true;
+    }
+
+    void Cooldown()
+    {
+        timer -= Time.deltaTime;
+        if(timer<= 0 && cooling && attackMode)
+        {
+            cooling = false;
+            timer = intTimer;
+        }
+    }
+
+    void StopAttack()
+    {
+        animator.SetBool("isAttacking", false);
+        cooling = false;
+        attackMode = false;
     }
 
 
@@ -82,6 +110,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (trig.gameObject.tag == "Player")
         {
             inRange = true;
+            
         }
     }
     
@@ -93,7 +122,7 @@ public class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
     }
 
-    protected void Flip()
+    private void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
         if(transform.position.x < target.position.x)
@@ -108,6 +137,10 @@ public class EnemyBehaviour : MonoBehaviour
         transform.eulerAngles = rotation;
     }
 
+    public void TriggerCooldown()
+    {
+        cooling = true;
+    }
 
     void RaycastDebugger()
     {

@@ -6,14 +6,11 @@ public class WeaponHolderController : MonoBehaviour
 {
 
     public int totalWeaponCount = 2;
-    public int maxGrenadeCount = 3;
-    public GameObject grenadePrefab;
     public GameObject weaponHolder;
     public GameObject[] weapons;
 
     private int currentWeaponIndex;
     private int currentWeaponCount;
-    private int currentGrenadeCount;
     private GameObject equippedWeapon;
     private Vector3 playerScale;
 
@@ -24,48 +21,22 @@ public class WeaponHolderController : MonoBehaviour
         weapons = new GameObject[totalWeaponCount];
         currentWeaponIndex = 0;
         currentWeaponCount = 0;
-        currentGrenadeCount = 0;
         playerScale = GetComponentInParent<Transform>().localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-=======
-        if(currentGrenadeCount == 0)
->>>>>>> Piskor
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (grenadePrefab.active)
-                    grenadePrefab.SetActive(false);
-        }
-        if (Input.GetKeyDown(KeyCode.G) && currentGrenadeCount > 0)
-        {
-            EquipGrenade();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {  
             currentWeaponIndex = 0;
-            ChangeWeapon();
+            ChangeWeapon();       
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentWeaponIndex = 1;
             ChangeWeapon();
-        }
-<<<<<<< HEAD
-=======
-        
-    }
-
-
-    private void EquipGrenade()
-    {
-        DeactivateAllWeapons();
-        if(currentGrenadeCount > 0)
-            grenadePrefab.SetActive(true);
->>>>>>> Piskor
+        }        
     }
 
 
@@ -74,70 +45,27 @@ public class WeaponHolderController : MonoBehaviour
         equippedWeapon = weapons[currentWeaponIndex];
         DeactivateOtherWeapons();
 
-<<<<<<< HEAD
-=======
-        if (grenadePrefab.active)
-                    grenadePrefab.SetActive(false);
-
-
->>>>>>> Piskor
-        if (weapons[currentWeaponIndex] != null)
+        if(weapons[currentWeaponIndex] != null)
             weapons[currentWeaponIndex].SetActive(true);
     }
 
 
     private void DeactivateOtherWeapons()
     {
-        for (int i = 0; i < totalWeaponCount; i++)
+        for(int i = 0; i  < totalWeaponCount; i++)
         {
-            if (i != currentWeaponIndex)
+            if( i != currentWeaponIndex)
             {
-                if (weapons[i] != null)
+                if(weapons[i] != null)
                 {
                     weapons[i].SetActive(false);
                 }
-
+                
             }
         }
     }
 
 
-<<<<<<< HEAD
-=======
-    private void DeactivateAllWeapons()
-    {
-        for (int i = 0; i < totalWeaponCount; i++)
-        {
-            if (weapons[i] != null)
-            {
-                weapons[i].SetActive(false);
-            }
-        }
-    }
-
-
->>>>>>> Piskor
-    private void deleteCurrentWeapon()
-    {
-        Destroy(weapons[currentWeaponIndex]);
-        weapons[currentWeaponIndex] = null;
-    }
-
-
-<<<<<<< HEAD
-=======
-    public bool AddGrenade()
-    {
-        if(currentGrenadeCount < maxGrenadeCount)
-        {
-            currentGrenadeCount++;
-            return true;
-        }
-        return false;
-    }
-
-
->>>>>>> Piskor
     public bool PickUpWeapon(GameObject weaponPrefab)
     {
         if (currentWeaponCount < totalWeaponCount)
@@ -151,45 +79,17 @@ public class WeaponHolderController : MonoBehaviour
                     currentWeaponCount++;
 
                     weapon.transform.SetParent(weaponHolder.transform);
-                    weapon.transform.localScale = playerScale;
+                    weapon.transform.localScale = playerScale;                 
 
                     weapon.SetActive(false);
                     return true;
                 }
             }
         }
-        else
-        {
-
-            GameObject pickableWeapon = weapons[currentWeaponIndex].GetComponent<ItemDropHandler>().getPickablePrefab();
-            GameObject weaponPickable = Instantiate(pickableWeapon, weaponHolder.transform.position, Quaternion.identity);
-            deleteCurrentWeapon();
-
-            GameObject weapon = Instantiate(weaponPrefab, weaponHolder.transform.position, weaponHolder.transform.rotation);
-            weapons[currentWeaponIndex] = weapon;
-            currentWeaponCount++;
-
-            weapon.transform.SetParent(weaponHolder.transform);
-            weapon.transform.localScale = playerScale;
-
-            weapon.SetActive(false);
-            return true;
-
+        else{
+            
         }
 
         return false;
-    }
-
-
-    public void DecreaseGrenadeCount()
-    {
-        if(currentGrenadeCount > 0)
-            currentGrenadeCount--;
-    }
-
-
-    public bool isGrenadeFull()
-    {
-        return currentGrenadeCount >= maxGrenadeCount;
     }
 }

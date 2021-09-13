@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class PickUpActionHandler : MonoBehaviour
 {
     public GameObject weaponPrefab;
 
+    [SerializeField]
+    private Text pickUpText;
     private WeaponHolderController weaponHolderController;
     private bool pickUpAllowed;
 
@@ -14,6 +16,7 @@ public class PickUpActionHandler : MonoBehaviour
     void Start()
     {
         weaponHolderController = GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponHolderController>();
+        pickUpText.gameObject.SetActive(false);
     }
 
 
@@ -28,7 +31,9 @@ public class PickUpActionHandler : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Player"))
         {
+            pickUpText.gameObject.SetActive(true);
             pickUpAllowed = true;
+
         }
     }
 
@@ -36,7 +41,9 @@ public class PickUpActionHandler : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Player"))
         {
+            pickUpText.gameObject.SetActive(false);
             pickUpAllowed = false;
+
         }
     }
 
@@ -46,6 +53,7 @@ public class PickUpActionHandler : MonoBehaviour
         weaponHolderController.PickUpWeapon(weaponPrefab);
         gameObject.SetActive(false);
         Destroy(gameObject, 3f);
+
     }
 
 }

@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Weapon
+  - Obstacle
+  - Crate
+  - Bullet
+  - Attack
   layers:
   - Default
   - TransparentFX
@@ -12,6 +17,7 @@ TagManager:
   - Water
   - UI
   - 
+  - CollideLayer
   - 
   - 
   - 
@@ -35,9 +41,23 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Player
   m_SortingLayers:
+  - name: terrain_behind
+    uniqueID: 2425651459
+    locked: 0
+  - name: terrain_behind_not_lit
+    uniqueID: 227625289
+    locked: 0
+  - name: objects
+    uniqueID: 3635803185
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: terrain_front
+    uniqueID: 3564644197
+    locked: 0
+  - name: crosshair_layer
+    uniqueID: 4184990255
     locked: 0

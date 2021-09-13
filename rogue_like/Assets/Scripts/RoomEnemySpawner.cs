@@ -7,20 +7,14 @@ public class RoomEnemySpawner : MonoBehaviour
 
     public GameObject[] enemies;
     public Vector2 spawnArea;
-<<<<<<< HEAD
-    public int enemyMaxNumber;
-    public int enemyMinNumber;
-=======
-    public int enemyMaxNumber = 0;
-    public int enemyMinNumber = 0;
->>>>>>> Piskor
+    public int enemyMaxNumber = 5;
+    public int enemyMinNumber = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < (int)Random.Range(enemyMinNumber, enemyMaxNumber+1); i++)
+        for (int i = 0; i < (int)Random.Range(enemyMinNumber, enemyMaxNumber); i++)
         {
-            
             int enemyID = (int)Random.Range(0, enemies.Length);
             var enemy = Instantiate(enemies[enemyID], transform, false);
 
