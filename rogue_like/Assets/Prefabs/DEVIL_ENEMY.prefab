@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &192901188548696653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2809338984850499482}
+  m_Layer: 7
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2809338984850499482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192901188548696653}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.33, y: -0.17, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 962447109097914357}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &962447107419982354
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 962447109097914357}
   - component: {fileID: 962447109097914356}
-  - component: {fileID: 962447109097914359}
+  - component: {fileID: -5058854560213131645}
   - component: {fileID: 8977991018419016285}
   - component: {fileID: 2521837920331484850}
   - component: {fileID: 8476695735103717037}
@@ -114,6 +144,7 @@ Transform:
   - {fileID: 962447107419982355}
   - {fileID: 962447107573958717}
   - {fileID: 5544046513523064424}
+  - {fileID: 2809338984850499482}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -138,7 +169,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &962447109097914359
+--- !u!114 &-5058854560213131645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,21 +178,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 962447109097914353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2622c811e9a81a4082ece0dc2615170, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d2685969eae5054b94f6aefcd503377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rayCast: {fileID: 962447107573958717}
   raycastMask:
     serializedVersion: 2
     m_Bits: 2147483648
-  rayCastLength: 6
-  attackDistance: 1
+  rayCastLength: 10
+  attackDistance: 6
   moveSpeed: 1
-  timer: 3
   maxHealth: 20
   health: 20
   body: {fileID: 962447109264710717}
   animator: {fileID: 8476695735103717037}
+  firePoint: {fileID: 2809338984850499482}
+  bulletPrefab: {fileID: 6597104270963785178, guid: f8985b9a11885e84480223827b18bcc7,
+    type: 3}
+  bulletForce: 200
+  fireRate: 2
+  minimumShootAngle: 0
+  maximumShootAngle: 0
+  damage: 10
 --- !u!212 &8977991018419016285
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -234,6 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalWeaponCount: 2
+  maxGrenadeCount: 3
+  grenadePrefab: {fileID: 3735764765106033950, guid: 631ec104a9662714187f8263627f6032,
+    type: 3}
   weaponHolder: {fileID: 7192537234537868583}
   weapons: []
 --- !u!114 &7192537234808504420
