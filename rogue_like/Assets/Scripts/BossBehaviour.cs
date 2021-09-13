@@ -15,11 +15,12 @@ public class BossBehaviour : EnemyShooterBehaviour
         health = maxHealth;
         healthBar.SetMaxhealth(maxHealth);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().transform;
-        healthImg.enabled = true;
+        healthImg.enabled = false;
     }
 
     protected override void EnemyLogic()
     {
+        healthImg.enabled = true;
         distance = Vector2.Distance(transform.position, target.position);
         healthBar.SetHealth(health);
         if (distance > attackDistance)
