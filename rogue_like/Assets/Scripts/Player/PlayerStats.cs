@@ -5,10 +5,14 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 
+    [SerializeField]
     public static int MaxHealth = 20;
+    [SerializeField]
     public static int CurrentHealth;
+    [SerializeField]
     public static int Damage = 5;
-    public static int MovementSpeed = 5; 
+    [SerializeField]
+    public static int MovementSpeed = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +20,5 @@ public class PlayerStats : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
-    
+
 }

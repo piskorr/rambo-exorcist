@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4272116107444555529}
   - component: {fileID: 4272116107444555528}
   m_Layer: 5
-  m_Name: UpgradeOrbStrengthButton
+  m_Name: UpgradeButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,9 +201,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 407508456898788454}
         m_TargetAssemblyTypeName: UpgradeShopController, Assembly-CSharp
-        m_MethodName: TryUpgradeOrbShootStrength
+        m_MethodName: TryUpgradeMovementSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 4272116107562405450}
   - component: {fileID: 4272116107562405449}
   m_Layer: 5
-  m_Name: OrbCooldownUpgradeText
+  m_Name: UpgradeText3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,7 +264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -346.9, y: -60}
+  m_AnchoredPosition: {x: -387.9, y: -60}
   m_SizeDelta: {x: 296.226, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4272116107562405556
@@ -308,7 +308,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Orb's Cooldown
+  m_Text: Max Health
 --- !u!114 &4272116107562405450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 4272116107966578805}
   - component: {fileID: 4272116107966578804}
   m_Layer: 5
-  m_Name: OrbStrengthText
+  m_Name: StatText2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 4272116108040693403}
   - component: {fileID: 4272116108040693402}
   m_Layer: 5
-  m_Name: UpgradeMaxOrbButton
+  m_Name: UpgradeButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -572,9 +572,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 407508456898788454}
         m_TargetAssemblyTypeName: UpgradeShopController, Assembly-CSharp
-        m_MethodName: TryUpgradeMaxOrbCount
+        m_MethodName: TryUpgradeDamage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -721,7 +721,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 407508456898788454}
         m_TargetAssemblyTypeName: UpgradeShopController, Assembly-CSharp
         m_MethodName: ExitUpgradeShop
         m_Mode: 1
@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 4272116108135331824}
   - component: {fileID: 4272116108135331831}
   m_Layer: 5
-  m_Name: MaxOrbUpgradeText
+  m_Name: UpgradeText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -784,7 +784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 49}
+  m_AnchoredPosition: {x: -422.4, y: 49}
   m_SizeDelta: {x: 189.722, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4272116108135331826
@@ -828,7 +828,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Max Orbs
+  m_Text: Damage
 --- !u!114 &4272116108135331824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 4272116108135932817}
   - component: {fileID: 4272116108135932816}
   m_Layer: 5
-  m_Name: OrbStrengthUpgradeText
+  m_Name: UpgradeText2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,7 +895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -349.2, y: -4}
+  m_AnchoredPosition: {x: -335.2, y: -4}
   m_SizeDelta: {x: 291.2724, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4272116108135932819
@@ -939,7 +939,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Orb's Strength
+  m_Text: Movement Speed
 --- !u!114 &4272116108135932817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,7 +1063,7 @@ GameObject:
   - component: {fileID: 4272116108640185549}
   - component: {fileID: 4272116108640185548}
   m_Layer: 5
-  m_Name: MaxOrbText
+  m_Name: StatText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1174,7 +1174,7 @@ GameObject:
   - component: {fileID: 4272116108668715632}
   - component: {fileID: 4272116108668715639}
   m_Layer: 5
-  m_Name: UpgradeOrbCooldownButton
+  m_Name: UpgradeButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1282,9 +1282,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 407508456898788454}
         m_TargetAssemblyTypeName: UpgradeShopController, Assembly-CSharp
-        m_MethodName: TryUpgradeOrbRespawnCooldown
+        m_MethodName: TryUpgradeMaxHealth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1399,6 +1399,7 @@ GameObject:
   - component: {fileID: 4272116108857875615}
   - component: {fileID: 4272116108857875609}
   - component: {fileID: 4272116108857875608}
+  - component: {fileID: 407508456898788454}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -1474,6 +1475,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &407508456898788454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272116108857875614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c15596688de3e4da4c6553feb240b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeText1: {fileID: 4272116108640185550}
+  UpgradeValue1: 1
+  UpgradeText2: {fileID: 4272116107966578806}
+  UpgradeValue2: 1
+  UpgradeText3: {fileID: 4272116108913687066}
+  UpgradeValue3: 1
+  CoinText: {fileID: 6831037291872581884}
+  UpgradeCost: 3
 --- !u!1 &4272116108913687070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1509,7 @@ GameObject:
   - component: {fileID: 4272116108913687065}
   - component: {fileID: 4272116108913687064}
   m_Layer: 5
-  m_Name: OrbCooldownText
+  m_Name: StatText3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1798,6 +1819,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d7641e555ce834429173a0e8e550f41, type: 3}
+--- !u!114 &6831037291872581884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7315291438335954733, guid: 4d7641e555ce834429173a0e8e550f41,
+    type: 3}
+  m_PrefabInstance: {fileID: 4272116108929693649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831037291872581886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6831037291872581887 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7315291438335954734, guid: 4d7641e555ce834429173a0e8e550f41,

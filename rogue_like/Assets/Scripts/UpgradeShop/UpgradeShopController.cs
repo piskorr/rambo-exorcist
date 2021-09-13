@@ -9,19 +9,19 @@ public class UpgradeShopController : MonoBehaviour
 {
 
     [SerializeField]
-    private Text MaxOrbCountText;
+    private Text UpgradeText1;
 
-    public int MaxOrbCountUpgrade = 1;
-
-    [SerializeField]
-    private Text OrbShootStrengthText;
-
-    public float OrbShootStrengthMultiplierUpgrade = 1.5f;
+    public int UpgradeValue1 = 1;
 
     [SerializeField]
-    private Text OrbRespawnCooldownText;
+    private Text UpgradeText2;
 
-    public float OrbRespawnCooldownMultiplierUpgrade = 0.8f;
+    public int UpgradeValue2 = 1;
+
+    [SerializeField]
+    private Text UpgradeText3;
+
+    public int UpgradeValue3 = 1;
 
     [SerializeField]
     private Text CoinText;
@@ -30,71 +30,70 @@ public class UpgradeShopController : MonoBehaviour
     private int UpgradeCost = 3;
 
 
-    // // Start is called before the first frame update
-    // void Start()
-    // {
+    // Start is called before the first frame update
+    void Start()
+    {
+        this.gameObject.SetActive(false);
+        UpgradeText1.text = PlayerStats.Damage.ToString();
+        UpgradeText2.text = PlayerStats.MovementSpeed.ToString();
+        UpgradeText3.text = PlayerStats.MaxHealth.ToString();
+    }
 
-    //     this.gameObject.SetActive(false);
-    //     MaxOrbCountText.text = OrbGun.MaxOrbCount.ToString();
-    //     OrbShootStrengthText.text = OrbGun.OrbShootStrength.ToString();
-    //     OrbRespawnCooldownText.text = OrbGun.OrbRespawnCooldown.ToString();
-    // }
-
-    // // Update is called once per frame
-    // void Update()
-    // {
-    //     CoinText.text = ScoreTextScript.coinCount.ToString();
-    // }
-
-
-    // public void TryUpgradeMaxOrbCount()
-    // {
-    //     if (TryBuyUpgrade())
-    //         {
-    //             OrbGun.MaxOrbCount += MaxOrbCountUpgrade;
-    //             MaxOrbCountText.text = OrbGun.MaxOrbCount.ToString();
-    //         }
-    // }
+    // Update is called once per frame
+    void Update()
+    {
+        CoinText.text = ScoreTextScript.coinCount.ToString();
+    }
 
 
-    // public void TryUpgradeOrbShootStrength()
-    // {
-    //     if (TryBuyUpgrade())
-    //         {
-    //             OrbGun.OrbShootStrength *= OrbShootStrengthMultiplierUpgrade;
-    //             OrbShootStrengthText.text = OrbGun.OrbShootStrength.ToString();
-    //         }
-    // }
+    public void TryUpgradeDamage()
+    {
+        if (TryBuyUpgrade())
+        {
+            PlayerStats.Damage += UpgradeValue1;
+            UpgradeText1.text = PlayerStats.Damage.ToString();
+        }
+    }
 
 
-    // public void TryUpgradeOrbRespawnCooldown()
-    // {
-    //     if (TryBuyUpgrade())
-    //         {
-    //             OrbGun.OrbRespawnCooldown *= OrbRespawnCooldownMultiplierUpgrade;
-    //             OrbRespawnCooldownText.text = OrbGun.OrbRespawnCooldown.ToString();
-    //         }
-    // }
+    public void TryUpgradeMovementSpeed()
+    {
+        if (TryBuyUpgrade())
+        {
+            PlayerStats.MovementSpeed += UpgradeValue2;
+            UpgradeText2.text = PlayerStats.MovementSpeed.ToString();
+        }
+    }
 
 
-    // private bool TryBuyUpgrade()
-    // {
-    //     if (ScoreTextScript.coinCount >= UpgradeCost)
-    //     {
-    //         ScoreTextScript.coinCount -= UpgradeCost;
-    //         return true;
-    //     }
-
-    //     return false;
-    // }
+    public void TryUpgradeMaxHealth()
+    {
+        if (TryBuyUpgrade())
+        {
+            PlayerStats.MaxHealth += UpgradeValue3;
+            UpgradeText3.text = PlayerStats.MaxHealth.ToString();
+        }
+    }
 
 
-    // public void ExitUpgradeShop()
-    // {
-    //     Time.timeScale = 1f;
-    //     SetOtherUIActiveStatus(true);
-    //     this.gameObject.SetActive(false);        
-    // }
+    private bool TryBuyUpgrade()
+    {
+        if (ScoreTextScript.coinCount >= UpgradeCost)
+        {
+            ScoreTextScript.coinCount -= UpgradeCost;
+            return true;
+        }
+
+        return false;
+    }
+
+
+    public void ExitUpgradeShop()
+    {
+        Time.timeScale = 1f;
+        SetOtherUIActiveStatus(true);
+        this.gameObject.SetActive(false);
+    }
 
 
     public void SetOtherUIActiveStatus(bool status)
