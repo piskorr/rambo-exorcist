@@ -31,12 +31,14 @@ public class BossBehaviour : EnemyShooterBehaviour
         {
             Flip();
             attackMode = true;
+            animator.SetBool("isAttacking", false);
             if (Time.time > fireTimer)
             {
+                animator.SetBool("isAttacking", true);
                 switch (Random.Range(1, 4))
                 {
                     case 1:
-                        animator.SetBool("isShooting", true);
+
                         ShootBullet(0.2f);
                         ShootBullet(0.1f);
                         ShootBullet(0);
@@ -66,7 +68,7 @@ public class BossBehaviour : EnemyShooterBehaviour
         velocity.x = velocity.x * Mathf.Cos(angleModifier) - velocity.y * Mathf.Sin(angleModifier);
         velocity.y = velocity.x * Mathf.Sin(angleModifier) + velocity.y * Mathf.Cos(angleModifier);
         Rigidbody2D rigidbody2D = bullet.GetComponent<Rigidbody2D>();
-       
+
         rigidbody2D.AddForce(velocity * bulletForce);
     }
 
