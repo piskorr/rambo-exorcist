@@ -13,7 +13,7 @@ public class PickUpTextManager : MonoBehaviour
     void Start()
     {
         pickUpWeaponText.gameObject.SetActive(false);
-        shopText.gameObject.SetActive(false);
+        //shopText.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
