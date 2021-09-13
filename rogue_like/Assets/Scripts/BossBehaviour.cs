@@ -7,10 +7,21 @@ public class BossBehaviour : EnemyShooterBehaviour
     public GameObject ghostPrefab;
     public GameObject devilPrefab;
     public Transform spawnPoint;
+    public Canvas healthImg;
+    public HealthBar healthBar;
+
+    protected override void Awake()
+    {
+        health = maxHealth;
+        healthBar.SetMaxhealth(maxHealth);
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().transform;
+        healthImg.enabled = true;
+    }
 
     protected override void EnemyLogic()
     {
         distance = Vector2.Distance(transform.position, target.position);
+        healthBar.SetHealth(health);
         if (distance > attackDistance)
         {
             attackMode = false;
