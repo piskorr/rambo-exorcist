@@ -15,6 +15,7 @@ public class EnemyShooterBehaviour : EnemyBehaviour
     protected override void EnemyLogic()
     {
         animator.SetBool("isAttacking", false);
+        animator.SetBool("isWalking", (inRange && !attackMode));
         distance = Vector2.Distance(transform.position, target.position);
         if (distance > attackDistance)
         {

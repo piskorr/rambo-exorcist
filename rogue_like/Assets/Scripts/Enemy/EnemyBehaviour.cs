@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     public int health;
     public GameObject body;
     public Animator animator;
+    public GameObject coinPrefab;
     #endregion
 
     #region Protected Variables
@@ -53,14 +54,13 @@ public class EnemyBehaviour : MonoBehaviour
 
     protected virtual void EnemyLogic()
     {
-        animator.SetBool("isAttacking", false);
+        
         distance = Vector2.Distance(transform.position, target.position);
         Move();
         attackMode = false;
         if (distance < attackDistance)
         {
             attackMode = true;
-            animator.SetBool("isAttacking", true);
         }
     }
 
@@ -90,7 +90,11 @@ public class EnemyBehaviour : MonoBehaviour
         inRange = true;
         health -= dmg;
         if (health <= 0)
+        {
             Destroy(gameObject);
+            GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.Euler(0, 0, 1));
+
+        }
     }
 
     protected void Flip()

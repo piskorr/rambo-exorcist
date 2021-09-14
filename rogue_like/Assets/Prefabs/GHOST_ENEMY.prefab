@@ -137,11 +137,12 @@ MonoBehaviour:
   rayCastLength: 6
   attackDistance: 1
   moveSpeed: 1
-  timer: 3
   maxHealth: 20
   health: 20
   body: {fileID: 8197527448343037891}
   animator: {fileID: 8197527448178566152}
+  coinPrefab: {fileID: 2007514085060168010, guid: 0ebd295b49965a245aa9e1c1ca67c827,
+    type: 3}
 --- !u!95 &8197527448178566152
 Animator:
   serializedVersion: 3
