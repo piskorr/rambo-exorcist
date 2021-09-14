@@ -60096,15 +60096,18 @@ MonoBehaviour:
     type: 3}
   corridorVertical: {fileID: 3319071194809259983, guid: 21f04f0879ffc9848b6b7eb76f276999,
     type: 3}
-  EmptyR: {fileID: 0}
-  EmptyT: {fileID: 0}
-  EmptyB: {fileID: 0}
-  EmptyL: {fileID: 0}
+  EmptyR: {fileID: 2422804106314360290, guid: 3a9e0a6e7acf8ca4f90bc9ec96e8e673, type: 3}
+  EmptyT: {fileID: 8774170928536574351, guid: fa015aa568b470c41ac52d139172f299, type: 3}
+  EmptyB: {fileID: 2422804106314360290, guid: 2e9fecc7d6651e541819a68b86d1339b, type: 3}
+  EmptyL: {fileID: 5661095540185141556, guid: 9e3361a17b65ca84bb8d3a32f824f743, type: 3}
   bossStuff: {fileID: 0}
-  shopStuff: {fileID: 0}
+  shopStuff: {fileID: 1031807910962381699, guid: 2296b8371e9813741be65dd4852cea6c,
+    type: 3}
   gridX: 10
   gridY: 10
-  numberOfRooms: 50
+  numberOfRooms: 30
+  shop: {fileID: 1031807910962381699, guid: 2296b8371e9813741be65dd4852cea6c, type: 3}
+  boss: {fileID: 866790114166249396, guid: 2b51fc4067134114ebe06efa7c736708, type: 3}
 --- !u!4 &2102065714
 Transform:
   m_ObjectHideFlags: 0
