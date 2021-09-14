@@ -6,27 +6,37 @@ using UnityEngine.UI;
 public class PickUpTextManager : MonoBehaviour
 {
 
-    public Text pickUpText;
+    public Text pickUpWeaponText;
+    public Text shopText;
 
     // Start is called before the first frame update
     void Start()
     {
-        pickUpText.gameObject.SetActive(false);
+        pickUpWeaponText.gameObject.SetActive(false);
+        //shopText.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Weapon") || collision.tag.Equals("Grenade"))
         {
-            pickUpText.gameObject.SetActive(true);
+            pickUpWeaponText.gameObject.SetActive(true);
+        }
+        else if (collision.tag.Equals("Shop"))
+        {
+            pickUpWeaponText.gameObject.SetActive(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Weapon") ||  collision.tag.Equals("Grenade"))
+        if (collision.tag.Equals("Weapon") || collision.tag.Equals("Grenade"))
         {
-            pickUpText.gameObject.SetActive(false);
+            pickUpWeaponText.gameObject.SetActive(false);
+        }
+        else if (collision.tag.Equals("Shop"))
+        {
+            pickUpWeaponText.gameObject.SetActive(true);
         }
     }
 }
