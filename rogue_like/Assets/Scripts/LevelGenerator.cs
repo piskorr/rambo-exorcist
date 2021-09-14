@@ -582,7 +582,7 @@ public class LevelGenerator : MonoBehaviour
         return (-1, -1);
     }
 
-    void generate()
+    public void generate()
     {
         if (gridX * gridY < numberOfRooms)
             numberOfRooms = gridX * gridY;
@@ -647,10 +647,18 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
+    public void destroyChildrensMovePlayer()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
     void Start()
     {
         generate();
     }
+
 
     // Update is called once per frame
     void Update()

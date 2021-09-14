@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class UpgradeShopNavigator : MonoBehaviour
 {
     [SerializeField]
-    private GameObject UpgradeShopPanel;
+    public GameObject UpgradeShopPanel;
     private bool interactionAllowed = false;
 
 
