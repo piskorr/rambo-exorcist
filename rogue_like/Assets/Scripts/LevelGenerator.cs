@@ -647,10 +647,18 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
+    void destroyChildrensMovePlayer()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
     void Start()
     {
         generate();
     }
+
 
     // Update is called once per frame
     void Update()

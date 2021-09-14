@@ -19,12 +19,14 @@ public class RoomEnemySpawner : MonoBehaviour
         spawnArea.y-=2;
         if (shop)
         {
-            Instantiate(shop, transform, false);
+            var sh = Instantiate(shop, transform, false);
+            var script = sh.GetComponent<UpgradeShopNavigator>();
+            script.UpgradeShopPanel = GameObject.Find("UI");
         }
         else if (boss)
         {
-            var bossC = Instantiate(boss, transform, false);
-            bossC.transform.Translate(new Vector3(Random.Range(-spawnArea.x - bossC.transform.position.x, spawnArea.x - bossC.transform.position.x), Random.Range(-spawnArea.y - bossC.transform.position.y, spawnArea.y - bossC.transform.position.y), 1));
+            var bossC = Instantiate(boss, transform, true);
+            //bossC.transform.Translate(new Vector3(Random.Range(-spawnArea.x - bossC.transform.position.x, spawnArea.x - bossC.transform.position.x), Random.Range(-spawnArea.y - bossC.transform.position.y, spawnArea.y - bossC.transform.position.y), 1));
         }
         else
         {
