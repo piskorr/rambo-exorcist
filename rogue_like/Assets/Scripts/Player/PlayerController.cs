@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public Camera gameCamera;
     public float characterSpeed;
     public bool characterFacingRight = true;
-    public static HealthBar healthBar;
+    public HealthBar healthBar;
 
     private SpriteRenderer sprite;
     private Rigidbody2D rigidbody2D;
@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        healthBar.SetMaxhealth(PlayerStats.MaxHealth);
     }
 
 
@@ -32,6 +31,8 @@ public class PlayerController : MonoBehaviour
         characterMovement = Vector3.zero;
         characterMovement.x = Input.GetAxisRaw("Horizontal");
         characterMovement.y = Input.GetAxisRaw("Vertical");
+        healthBar.SetMaxhealth(PlayerStats.MaxHealth);
+        healthBar.SetHealth(PlayerStats.CurrentHealth);
 
         mousePosition = gameCamera.ScreenToWorldPoint(Input.mousePosition);
 
@@ -89,7 +90,6 @@ public class PlayerController : MonoBehaviour
         {
             lastDmgTime = Time.time;
             PlayerStats.CurrentHealth -= 10;
-            healthBar.SetHealth(PlayerStats.CurrentHealth);
         }
     }
 }

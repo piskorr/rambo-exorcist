@@ -178,6 +178,7 @@ MonoBehaviour:
   gameCamera: {fileID: 0}
   characterSpeed: 4.33
   characterFacingRight: 1
+  healthBar: {fileID: 5780463072683562302}
 --- !u!114 &1687943817674136725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +237,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpWeaponText: {fileID: 7306411000217393115}
-  shopText: {fileID: 0}
 --- !u!114 &1687943817724182883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +549,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5780463072683562302 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7175309782874883625, guid: f842187a79f01674fa68d3dbfebdcd1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3723217620262294295}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e607958f8a1e45f48af76700c75ff314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7306411000217393115 stripped
