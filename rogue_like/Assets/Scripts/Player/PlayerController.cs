@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -90,6 +91,8 @@ public class PlayerController : MonoBehaviour
         {
             lastDmgTime = Time.time;
             PlayerStats.CurrentHealth -= 10;
+            if(PlayerStats.CurrentHealth<=0)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
 }

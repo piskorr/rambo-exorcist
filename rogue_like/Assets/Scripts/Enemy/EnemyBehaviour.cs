@@ -56,13 +56,11 @@ public class EnemyBehaviour : MonoBehaviour
         animator.SetBool("isAttacking", false);
         distance = Vector2.Distance(transform.position, target.position);
         Move();
-        if (distance > attackDistance)
-        {
-            attackMode = false;
-        }
-        else if (distance < attackDistance)
+        attackMode = false;
+        if (distance < attackDistance)
         {
             attackMode = true;
+            animator.SetBool("isAttacking", true);
         }
     }
 
