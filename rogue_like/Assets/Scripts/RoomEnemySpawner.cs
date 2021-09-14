@@ -25,8 +25,8 @@ public class RoomEnemySpawner : MonoBehaviour
         }
         else if (boss)
         {
-            var bossC = Instantiate(boss, transform, true);
-            //bossC.transform.Translate(new Vector3(Random.Range(-spawnArea.x - bossC.transform.position.x, spawnArea.x - bossC.transform.position.x), Random.Range(-spawnArea.y - bossC.transform.position.y, spawnArea.y - bossC.transform.position.y), 1));
+            var bossC = Instantiate(boss, transform, false);
+          
         }
         else
         {
