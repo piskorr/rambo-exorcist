@@ -11,6 +11,7 @@ public class RoomEnemySpawner : MonoBehaviour
     public int enemyMinNumber = 1;
     public GameObject shop;
     public GameObject boss;
+    public bool is5tarting;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +22,13 @@ public class RoomEnemySpawner : MonoBehaviour
         {
             var sh = Instantiate(shop, transform, false);
             var script = sh.GetComponent<UpgradeShopNavigator>();
-            script.UpgradeShopPanel = GameObject.Find("UI");
         }
         else if (boss)
         {
             var bossC = Instantiate(boss, transform, false);
           
         }
-        else
+        else if(!is5tarting)
         {
             for (int i = 0; i < (int)Random.Range(enemyMinNumber, enemyMaxNumber); i++)
             {

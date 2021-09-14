@@ -81,4 +81,12 @@ public class BossBehaviour : EnemyShooterBehaviour
     {
         GameObject enemy = Instantiate(devilPrefab, spawnPoint.position, Quaternion.Euler(0, 0, 1));
     }
+
+    public override void Defeat()
+    {
+        Destroy(gameObject);
+        FindObjectOfType<LevelGenerator>().destroyChildrensMovePlayer();
+        FindObjectOfType<LevelGenerator>().generate();
+        GameObject.Find("Player").transform.position = Vector3.zero;
+    }
 }
