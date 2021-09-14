@@ -646,6 +646,7 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
+        RoomMap[gridY / 2, gridX / 2].GetComponent<RoomEnemySpawner>().is5tarting = true;
     }
     public void destroyChildrensMovePlayer()
     {

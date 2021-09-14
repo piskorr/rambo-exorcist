@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &804561417494584187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804561417494584166}
+  - component: {fileID: 804561417494584165}
+  m_Layer: 0
+  m_Name: LevelGenerator 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &804561417494584166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804561417494584187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &804561417494584165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804561417494584187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f16f2674f9e0947bb6fb823fdeec8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  T: {fileID: 8774170928536574351, guid: 33b3b4adbe5465d439d8b4180f33c7ae, type: 3}
+  TR: {fileID: 1462363619616780137, guid: 1fdba9a549461d647b262d878cd4d0f7, type: 3}
+  TL: {fileID: 8149374041042983023, guid: dae352bac3fcfe3428c4bd6851e82131, type: 3}
+  TBR: {fileID: 2879244789166621594, guid: e327947d0a495c44f8dd77e508d8d197, type: 3}
+  TBL: {fileID: 8743045316649362063, guid: 0da17bd896b5217429ea0b9ecb0ad8b8, type: 3}
+  TBRL: {fileID: 1830693504968240436, guid: 3b50a8b909dcda046960f986d35cef01, type: 3}
+  TRL: {fileID: 2783619322972153654, guid: 2dab1f9efbc71bb40931012fff5cfc8f, type: 3}
+  TB: {fileID: 3918441712139933259, guid: b292007a484a94e48ad0aba933673752, type: 3}
+  BLR: {fileID: 7403537240345988735, guid: a1c418eb3b59e374287ab033ea4d3443, type: 3}
+  BL: {fileID: 738830309895977731, guid: 5671ede439d8d164ba0851ab5ca80524, type: 3}
+  BR: {fileID: 2229679997136411880, guid: efe100190b36ab8458b0e53ae59f9801, type: 3}
+  B: {fileID: 2422804106314360290, guid: f5c1b226220fd664da84bcfa62d6e5f7, type: 3}
+  L: {fileID: 5661095540185141556, guid: 245610dc5db57cb4ba89d96d52f76d32, type: 3}
+  LR: {fileID: 8662273325372122272, guid: 2cfd6471d23cce44e88f5d0239753114, type: 3}
+  R: {fileID: 2422804106314360290, guid: c82100dbfb5ae6145ab39879a1ac57de, type: 3}
+  corridorHorizontal: {fileID: 4151735426610820859, guid: bdae50274122e944aa7d0b93bf763fa6,
+    type: 3}
+  corridorVertical: {fileID: 3319071194809259983, guid: 21f04f0879ffc9848b6b7eb76f276999,
+    type: 3}
+  EmptyR: {fileID: 2422804106314360290, guid: 3a9e0a6e7acf8ca4f90bc9ec96e8e673, type: 3}
+  EmptyT: {fileID: 8774170928536574351, guid: fa015aa568b470c41ac52d139172f299, type: 3}
+  EmptyB: {fileID: 2422804106314360290, guid: 2e9fecc7d6651e541819a68b86d1339b, type: 3}
+  EmptyL: {fileID: 5661095540185141556, guid: 9e3361a17b65ca84bb8d3a32f824f743, type: 3}
+  bossStuff: {fileID: 0}
+  shopStuff: {fileID: 1031807910962381699, guid: 2296b8371e9813741be65dd4852cea6c,
+    type: 3}
+  gridX: 10
+  gridY: 10
+  numberOfRooms: 30
+  shop: {fileID: 1031807910962381699, guid: 2296b8371e9813741be65dd4852cea6c, type: 3}
+  boss: {fileID: 0}

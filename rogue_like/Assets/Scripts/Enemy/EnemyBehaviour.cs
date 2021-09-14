@@ -91,10 +91,14 @@ public class EnemyBehaviour : MonoBehaviour
         health -= dmg;
         if (health <= 0)
         {
-            Destroy(gameObject);
-            GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.Euler(0, 0, 1));
-
+            Defeat();
         }
+    }
+
+    public virtual void Defeat()
+    {
+        Destroy(gameObject);
+        GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.Euler(0, 0, 1));
     }
 
     protected void Flip()
