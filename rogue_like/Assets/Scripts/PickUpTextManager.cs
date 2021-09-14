@@ -7,7 +7,6 @@ public class PickUpTextManager : MonoBehaviour
 {
 
     public Text pickUpWeaponText;
-    public Text shopText;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +21,6 @@ public class PickUpTextManager : MonoBehaviour
         {
             pickUpWeaponText.gameObject.SetActive(true);
         }
-        else if (collision.tag.Equals("Shop"))
-        {
-            pickUpWeaponText.gameObject.SetActive(true);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -33,10 +28,6 @@ public class PickUpTextManager : MonoBehaviour
         if (collision.tag.Equals("Weapon") || collision.tag.Equals("Grenade"))
         {
             pickUpWeaponText.gameObject.SetActive(false);
-        }
-        else if (collision.tag.Equals("Shop"))
-        {
-            pickUpWeaponText.gameObject.SetActive(true);
         }
     }
 }

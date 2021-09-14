@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
 
     [SerializeField]
-    public static int MaxHealth = 20;
+    public static int MaxHealth = 50;
     [SerializeField]
     public static int CurrentHealth;
     [SerializeField]
