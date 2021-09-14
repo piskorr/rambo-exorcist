@@ -29,6 +29,7 @@ public class EnemyShooterBehaviour : EnemyBehaviour
             {
                 animator.SetBool("isAttacking", true);
                 ShootBullet();
+
                 fireTimer = Time.time + fireRate;
             }
         }
@@ -36,7 +37,7 @@ public class EnemyShooterBehaviour : EnemyBehaviour
 
     void ShootBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x)));
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0,0, Mathf.Atan2(target.position.y-transform.position.y, target.position.x - transform.position.x)));
         bullet.GetComponent<BulletHandler>().setDmg(damage);
         bullet.tag = "Attack";
         Vector3 velocity = target.position - transform.position;
