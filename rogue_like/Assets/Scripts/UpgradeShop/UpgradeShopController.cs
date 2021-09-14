@@ -71,6 +71,7 @@ public class UpgradeShopController : MonoBehaviour
         if (TryBuyUpgrade())
         {
             PlayerStats.MaxHealth += UpgradeValue3;
+            PlayerController.healthBar.SetMaxhealth(PlayerStats.MaxHealth);
             UpgradeText3.text = PlayerStats.MaxHealth.ToString();
         }
     }

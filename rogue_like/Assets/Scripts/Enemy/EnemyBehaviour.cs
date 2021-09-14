@@ -34,15 +34,12 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        animator.SetBool("isWalking", (inRange && !attackMode));
-
         if (inRange)
         {
             hit = Physics2D.Raycast(rayCast.position, Vector2.left * rayCastLength, raycastMask);
             RaycastDebugger();
         }
-        if (hit.collider != null)
+        if(hit.collider!=null)
         {
             EnemyLogic();
         }
@@ -87,7 +84,7 @@ public class EnemyBehaviour : MonoBehaviour
             inRange = true;
         }
     }
-
+    
     public void OnHitEffect(int dmg)
     {
         inRange = true;
@@ -99,7 +96,7 @@ public class EnemyBehaviour : MonoBehaviour
     protected void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
-        if (transform.position.x < target.position.x)
+        if(transform.position.x < target.position.x)
         {
             rotation.y = 180f;
         }

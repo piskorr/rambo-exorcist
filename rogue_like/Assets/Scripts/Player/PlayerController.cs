@@ -10,9 +10,7 @@ public class PlayerController : MonoBehaviour
     public Camera gameCamera;
     public float characterSpeed;
     public bool characterFacingRight = true;
-    public int health;
-    public int maxHealth = 100;
-    public HealthBar healthBar;
+    public static HealthBar healthBar;
 
     private SpriteRenderer sprite;
     private Rigidbody2D rigidbody2D;
@@ -25,8 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        health = maxHealth;
-        healthBar.SetMaxhealth(maxHealth);
+        healthBar.SetMaxhealth(PlayerStats.MaxHealth);
     }
 
 
@@ -75,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        rigidbody2D.MovePosition(transform.position + characterMovement * characterSpeed * Time.deltaTime);
+        rigidbody2D.MovePosition(transform.position + characterMovement * PlayerStats.MovementSpeed * Time.deltaTime);
     }
 
 
@@ -91,8 +88,8 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Attack" && Time.time-lastDmgTime>invincibility)
         {
             lastDmgTime = Time.time;
-            health -= 10;
-            healthBar.SetHealth(health);
+            PlayerStats.CurrentHealth -= 10;
+            healthBar.SetHealth(PlayerStats.CurrentHealth);
         }
     }
 }

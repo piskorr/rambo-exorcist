@@ -14,7 +14,6 @@ public class EnemyShooterBehaviour : EnemyBehaviour
 
     protected override void EnemyLogic()
     {
-        animator.SetBool("isAttacking", false);
         distance = Vector2.Distance(transform.position, target.position);
         if (distance > attackDistance)
         {
@@ -27,8 +26,9 @@ public class EnemyShooterBehaviour : EnemyBehaviour
             attackMode = true;
             if (Time.time > fireTimer)
             {
-                animator.SetBool("isAttacking", true);
+                animator.SetBool("isShooting", true);
                 ShootBullet();
+
                 fireTimer = Time.time + fireRate;
             }
         }
@@ -36,7 +36,7 @@ public class EnemyShooterBehaviour : EnemyBehaviour
 
     void ShootBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x)));
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0,0, Mathf.Atan2(target.position.y-transform.position.y, target.position.x - transform.position.x)));
         bullet.GetComponent<BulletHandler>().setDmg(damage);
         bullet.tag = "Attack";
         Vector3 velocity = target.position - transform.position;

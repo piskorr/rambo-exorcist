@@ -122,4 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846f3858d5dbd6543b04bda9e6eae650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradeShopPanel: {fileID: 0}
+  UpgradeShopPanel: {fileID: 4272116108857875614, guid: 505e849114f54a04986969e484f127e8,
+    type: 3}
