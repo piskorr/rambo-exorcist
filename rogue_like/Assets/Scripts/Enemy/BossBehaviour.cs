@@ -64,7 +64,6 @@ public class BossBehaviour : EnemyShooterBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, 1));
         bullet.GetComponent<BulletHandler>().setDmg(damage);
-        bullet.tag = "Attack";
         Vector3 velocity = target.position - firePoint.position;
         velocity.x = velocity.x * Mathf.Cos(angleModifier) - velocity.y * Mathf.Sin(angleModifier);
         velocity.y = velocity.x * Mathf.Sin(angleModifier) + velocity.y * Mathf.Cos(angleModifier);
