@@ -34,6 +34,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("isWalking", (inRange && !attackMode));
         if (inRange)
         {
             hit = Physics2D.Raycast(rayCast.position, Vector2.left * rayCastLength, raycastMask);
@@ -52,6 +53,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     protected virtual void EnemyLogic()
     {
+        animator.SetBool("isAttacking", false);
         distance = Vector2.Distance(transform.position, target.position);
         Move();
         if (distance > attackDistance)

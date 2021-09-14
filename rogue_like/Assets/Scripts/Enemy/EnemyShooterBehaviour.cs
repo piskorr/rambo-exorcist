@@ -14,6 +14,7 @@ public class EnemyShooterBehaviour : EnemyBehaviour
 
     protected override void EnemyLogic()
     {
+        animator.SetBool("isAttacking", false);
         distance = Vector2.Distance(transform.position, target.position);
         if (distance > attackDistance)
         {
@@ -26,7 +27,7 @@ public class EnemyShooterBehaviour : EnemyBehaviour
             attackMode = true;
             if (Time.time > fireTimer)
             {
-                animator.SetBool("isShooting", true);
+                animator.SetBool("isAttacking", true);
                 ShootBullet();
 
                 fireTimer = Time.time + fireRate;

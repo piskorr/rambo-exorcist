@@ -32,12 +32,14 @@ public class BossBehaviour : EnemyShooterBehaviour
         {
             Flip();
             attackMode = true;
+            animator.SetBool("isAttacking", false);
             if (Time.time > fireTimer)
             {
+                animator.SetBool("isAttacking", true);
                 switch (Random.Range(1, 4))
                 {
                     case 1:
-                        animator.SetBool("isShooting", true);
+                        
                         ShootBullet(0.2f);
                         ShootBullet(0.1f);
                         ShootBullet(0);
