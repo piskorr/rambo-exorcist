@@ -8,6 +8,10 @@ public class LevelGenerator : MonoBehaviour
     public GameObject corridorHorizontal, corridorVertical;
     public GameObject EmptyR, EmptyT, EmptyB, EmptyL, bossStuff, shopStuff;
     public int gridX, gridY, numberOfRooms;
+    public GameObject shop;
+    public GameObject boss;
+
+    GameObject[,] RoomMap;
     int[,] map;
 
 
@@ -66,11 +70,90 @@ public class LevelGenerator : MonoBehaviour
 
     void spawnShop()
     {
+        int roomDistanceX = 27;
+        int roomDistanceY = 25;
+        int centerX = gridX / 2;
+        int centerY = gridY / 2;
+        RoomEnemySpawner roomSpawner;
+        (int, int) index;
+        do
+        {
+            index = selectiveRoomIndex();
+            roomSpawner = RoomMap[index.Item1, index.Item2].GetComponent(typeof(RoomEnemySpawner)) as RoomEnemySpawner;
+        } while (roomSpawner.boss != null);
 
+        int row = index.Item1;
+        int column = index.Item2;
+
+        if(row!= gridY-1)
+        if (map[row + 1, column] == 1)
+        {
+            Destroy(RoomMap[index.Item1, index.Item2]);
+            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyT, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        }
+        if (column != 0)
+            if (map[row, column - 1] == 1)
+        {
+            Destroy(RoomMap[index.Item1, index.Item2]);
+            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        }
+        if (column != gridX-1)
+            if (map[row, column + 1] == 1)
+        {
+            Destroy(RoomMap[index.Item1, index.Item2]);
+            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        }
+        if (row != 0)
+            if (map[row - 1, column] == 1)
+        {
+            Destroy(RoomMap[index.Item1, index.Item2]);
+            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        }
+        roomSpawner = RoomMap[index.Item1, index.Item2].GetComponent(typeof(RoomEnemySpawner)) as RoomEnemySpawner;
+        roomSpawner.shop = shop;
     }
     void spawnBoss()
     {
-        int side = (int)Random.Range(1,4);
+        int roomDistanceX = 27;
+        int roomDistanceY = 25;
+        int centerX = gridX / 2;
+        int centerY = gridY / 2;
+        RoomEnemySpawner roomSpawner;
+        (int, int) index;
+        do
+        {
+            index = selectiveRoomIndex();
+            roomSpawner = RoomMap[index.Item1, index.Item2].GetComponent(typeof(RoomEnemySpawner)) as RoomEnemySpawner;
+        } while (roomSpawner.shop != null);
+        int row = index.Item1;
+        int column = index.Item2;
+
+        if (row != gridY - 1)
+            if (map[row+1, column] == 1)
+        {
+            Destroy(RoomMap[index.Item1, index.Item2]);
+            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyT, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        }
+        if (column != 0)
+            if (map[row, column-1] == 1)
+        {
+            Destroy(RoomMap[index.Item1, index.Item2]);
+            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        }
+        if (column != gridX - 1)
+            if (map[row, column+1] == 1)
+        {
+            Destroy(RoomMap[index.Item1, index.Item2]);
+            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        }
+        if (row != 0)
+            if (map[row-1, column] == 1)
+        {
+            Destroy(RoomMap[index.Item1, index.Item2]);
+            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        }
+        roomSpawner = RoomMap[index.Item1, index.Item2].GetComponent(typeof(RoomEnemySpawner)) as RoomEnemySpawner;
+        roomSpawner.boss = boss;
 
     }
     void spawnCorridor(int row, int column)
@@ -80,15 +163,19 @@ public class LevelGenerator : MonoBehaviour
 
         int roomDistanceX = 27;
         int roomDistanceY = 25;
-
+        GameObject corridor = null;
         if (column < gridX - 1 && map[row, column + 1] == 1)
         {
-            Instantiate(corridorHorizontal, new Vector3(transform.position.x + (column - centerX) * roomDistanceX + roomDistanceX/2 + 2, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+            corridor = Instantiate(corridorHorizontal, new Vector3(transform.position.x + (column - centerX) * roomDistanceX + roomDistanceX/2 + 2, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+            corridor.transform.parent = gameObject.transform;
         }
         if (row < gridY - 1 && map[row + 1, column] == 1)
         {
-            Instantiate(corridorVertical, new Vector3(transform.position.x + (column - centerX) * roomDistanceX + 6, transform.position.y + (row - centerY) * roomDistanceY +roomDistanceY/2 + 3, transform.position.z), Quaternion.identity);
+            corridor = Instantiate(corridorVertical, new Vector3(transform.position.x + (column - centerX) * roomDistanceX + 6, transform.position.y + (row - centerY) * roomDistanceY +roomDistanceY/2 + 3, transform.position.z), Quaternion.identity);
+            corridor.transform.parent = gameObject.transform;
         }
+
+            
     }
     void spawnRoom(int row, int column)
     {
@@ -104,24 +191,24 @@ public class LevelGenerator : MonoBehaviour
                 if (map[row + 1, column] == 1)
                 {
                     if (map[row, column + 1] == 1)
-                        Instantiate(TR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(TR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     else
-                        Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
                 else
-                    Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                    RoomMap[row, column] = Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
             }
             else if (column == gridX - 1)// prawy dolny rog
             {
                 if (map[row + 1, column] == 1)
                 {
                     if (map[row, column - 1] == 1)
-                        Instantiate(TL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(TL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     else
-                        Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
                 else
-                    Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                    RoomMap[row, column] = Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
             }
             else // dolna krawedz
             {
@@ -130,29 +217,29 @@ public class LevelGenerator : MonoBehaviour
                     if (map[row, column + 1] == 1)
                     {
                         if (map[row, column - 1] == 1)
-                            Instantiate(TRL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(TRL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         else
-                            Instantiate(TR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(TR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else if (map[row, column - 1] == 1)
                     {
-                        Instantiate(TL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(TL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else
                     {
-                        Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                 }
                 else if (map[row, column + 1] == 1)
                 {
                     if (map[row, column - 1] == 1)
-                        Instantiate(LR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(LR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     else
-                        Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                    RoomMap[row, column] = Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
             }
         }
@@ -165,24 +252,24 @@ public class LevelGenerator : MonoBehaviour
                 if (map[row - 1, column] == 1)
                 {
                     if (map[row, column + 1] == 1)
-                        Instantiate(BR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(BR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     else
-                        Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
                 else
-                    Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                    RoomMap[row, column] = Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
             }
             else if (column == gridX - 1)// prawy górny rog
             {
                 if (map[row - 1, column] == 1)
                 {
                     if (map[row, column - 1] == 1)
-                        Instantiate(BL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(BL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     else
-                        Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
                 else
-                    Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                    RoomMap[row, column] = Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
             }
             else // górna krawedz
             {
@@ -191,29 +278,29 @@ public class LevelGenerator : MonoBehaviour
                     if (map[row, column + 1] == 1)
                     {
                         if (map[row, column - 1] == 1)
-                            Instantiate(BLR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(BLR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         else
-                            Instantiate(BR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(BR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else if (map[row, column - 1] == 1)
                     {
-                        Instantiate(BL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(BL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else
                     {
-                        Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                 }
                 else if (map[row, column + 1] == 1)
                 {
                     if (map[row, column - 1] == 1)
-                        Instantiate(LR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(LR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     else
-                        Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                    RoomMap[row, column] = Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
             }
         }
@@ -226,28 +313,28 @@ public class LevelGenerator : MonoBehaviour
                     if (map[row - 1, column] == 1)
                     {
                         if (map[row, column + 1] == 1)
-                            Instantiate(TBR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(TBR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         else
-                            Instantiate(TB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(TB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else if (map[row, column + 1] == 1)
                     {
-                        Instantiate(TR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(TR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else
                     {
-                        Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                 }
                 else if (map[row - 1, column] == 1)
                 {
                     if (map[row, column + 1] == 1)
-                        Instantiate(BR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(BR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     else
-                        Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
                 else
-                    Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                    RoomMap[row, column] = Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
 
             }
             else if (column == gridX - 1)
@@ -257,28 +344,28 @@ public class LevelGenerator : MonoBehaviour
                     if (map[row - 1, column] == 1)
                     {
                         if (map[row, column - 1] == 1)
-                            Instantiate(TBL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(TBL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         else
-                            Instantiate(TB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(TB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else if (map[row, column - 1] == 1)
                     {
-                        Instantiate(TL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(TL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else
                     {
-                        Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                 }
                 else if (map[row - 1, column] == 1)
                 {
                     if (map[row, column - 1] == 1)
-                        Instantiate(BL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(BL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     else
-                        Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
                 else
-                    Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                    RoomMap[row, column] = Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
             }
             ////////////////////////////////////
             else
@@ -291,32 +378,32 @@ public class LevelGenerator : MonoBehaviour
                         if (map[row, column + 1] == 1)
                         {
                             if (map[row, column - 1] == 1)
-                                Instantiate(TBRL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                                RoomMap[row, column] = Instantiate(TBRL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                             else
-                                Instantiate(TBR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                                RoomMap[row, column] = Instantiate(TBR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         }
                         else if (map[row, column - 1] == 1)
                         {
-                            Instantiate(TBL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(TBL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         }
                         else
-                            Instantiate(TB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(TB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else
                     {
                         if (map[row, column + 1] == 1)
                         {
                             if (map[row, column - 1] == 1)
-                                Instantiate(TRL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                                RoomMap[row, column] = Instantiate(TRL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                             else
-                                Instantiate(TR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                                RoomMap[row, column] = Instantiate(TR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         }
                         else if (map[row, column - 1] == 1)
                         {
-                            Instantiate(TL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(TL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         }
                         else
-                            Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(T, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                 }
 
@@ -326,29 +413,29 @@ public class LevelGenerator : MonoBehaviour
                     if (map[row, column + 1] == 1)
                     {
                         if (map[row, column - 1] == 1)
-                            Instantiate(BLR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(BLR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         else
-                            Instantiate(BR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(BR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else if (map[row, column - 1] == 1)
                     {
-                        Instantiate(BL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(BL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else
-                        Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(B, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                 }
                 else
                 {
                     if (map[row, column + 1] == 1)
                     {
                         if (map[row, column - 1] == 1)
-                            Instantiate(LR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(LR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                         else
-                            Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                            RoomMap[row, column] = Instantiate(R, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                     else
                     {
-                        Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+                        RoomMap[row, column] = Instantiate(L, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
                     }
                 }
             }
@@ -367,6 +454,72 @@ public class LevelGenerator : MonoBehaviour
             return (-1, -1);
         else
             return (row, column);
+    }
+
+    (int, int) randomRoomIndex()
+    {
+        int row, column;
+        int centerY = gridY / 2;
+        int centerX = gridX / 2;
+        do
+        {
+            row = Mathf.RoundToInt(Random.value * (gridY - 1));
+            column = Mathf.RoundToInt(Random.value * (gridX - 1));
+        } while (map[row, column] == 0);
+
+        if ((row, column) == (centerY, centerX))
+            return randomRoomIndex();
+
+        return (row, column);
+    }
+
+    (int, int) selectiveRoomIndex()
+    {
+        (int, int) index;
+
+        int iterations = 0;
+
+        do
+        {
+            index = randomRoomIndex();
+            iterations++;
+        } while (numOfNeighbours(index.Item1, index.Item2) > 1);
+
+        if (index != (-1, -1))
+            return index;
+
+        iterations = 0;
+        do
+        {
+            index = randomRoomIndex();
+            iterations++;
+        } while ((index == (-1, -1) || numOfNeighbours(index.Item1, index.Item2) > 2) && iterations < gridY * gridX / 6);
+
+        if (index != (-1, -1))
+            return index;
+
+        iterations = 0;
+        do
+        {
+            index = randomRoomIndex();
+            iterations++;
+        } while ((index == (-1, -1) || numOfNeighbours(index.Item1, index.Item2) > 3) && iterations < gridY * gridX / 3);
+
+        if (index != (-1, -1))
+            return index;
+
+        iterations = 0;
+        do
+        {
+            index = randomRoomIndex();
+            iterations++;
+        } while (index == (-1, -1) && iterations < gridY * gridX);
+
+        if (index != (-1, -1))
+            return index;
+        else
+            return randomRoomIndex();
+
     }
 
     (int, int) selectiveIndex()
@@ -429,15 +582,15 @@ public class LevelGenerator : MonoBehaviour
         return (-1, -1);
     }
 
-    void Start()
+    void generate()
     {
-
         if (gridX * gridY < numberOfRooms)
             numberOfRooms = gridX * gridY;
 
-        map = new int[gridX, gridY];
+        RoomMap = new GameObject[gridY, gridX];
+        map = new int[gridY, gridX];
         for (int i = 0; i < gridY; i++)
-            for (int j = 0; j < gridY; j++)
+            for (int j = 0; j < gridX; j++)
                 map[i, j] = 0;
 
         map[gridY / 2, gridX / 2] = 1;
@@ -469,8 +622,6 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-
-
         for (int i = 0; i < gridY; i++)
         {
             for (int j = 0; j < gridX; j++)
@@ -482,7 +633,23 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
+        spawnBoss();
+        spawnShop();
 
+        for (int i = 0; i < gridY; i++)
+        {
+            for (int j = 0; j < gridX; j++)
+            {
+                if (map[i, j] != 0)
+                {
+                    RoomMap[i, j].transform.parent = gameObject.transform;
+                }
+            }
+        }
+    }
+    void Start()
+    {
+        generate();
     }
 
     // Update is called once per frame
