@@ -751,7 +751,7 @@ MonoBehaviour:
   body: {fileID: 7642738029326341454}
   animator: {fileID: 1362476228596103134}
   firePoint: {fileID: 7394403548646613964}
-  bulletPrefab: {fileID: 6597104270963785178, guid: f8985b9a11885e84480223827b18bcc7,
+  bulletPrefab: {fileID: 1154849041172678178, guid: 1a901f785f1e20340bd0c4c6a7c91a3d,
     type: 3}
   bulletForce: 120
   fireRate: 3
