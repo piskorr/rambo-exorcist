@@ -10,7 +10,7 @@ public class GrenadePickUpHandler : MonoBehaviour
 
     void Start()
     {
-        weaponHolderController = GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponHolderController>();
+        weaponHolderController = GameObject.Find("Player").GetComponent<WeaponHolderController>();
     }
 
 

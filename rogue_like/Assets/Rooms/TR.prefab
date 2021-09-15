@@ -53,6 +53,9 @@ MonoBehaviour:
   spawnArea: {x: 8, y: 8}
   enemyMaxNumber: 10
   enemyMinNumber: 5
+  shop: {fileID: 0}
+  boss: {fileID: 0}
+  is5tarting: 0
 --- !u!1 &1934815236258643982
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +997,7 @@ GameObject:
   - component: {fileID: 7458676981597131501}
   m_Layer: 0
   m_Name: Walls_front
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
