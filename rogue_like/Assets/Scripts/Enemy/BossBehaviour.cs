@@ -10,12 +10,15 @@ public class BossBehaviour : EnemyShooterBehaviour
     public Canvas healthImg;
     public HealthBar healthBar;
 
+    private void Start()
+    {
+        healthImg.enabled = false;
+    }
     protected override void Awake()
     {
         health = maxHealth;
         healthBar.SetMaxhealth(maxHealth);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().transform;
-        healthImg.enabled = false;
     }
 
     protected override void EnemyLogic()
