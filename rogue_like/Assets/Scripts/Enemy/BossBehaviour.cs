@@ -87,6 +87,6 @@ public class BossBehaviour : EnemyShooterBehaviour
         Destroy(gameObject);
         FindObjectOfType<LevelGenerator>().destroyChildrensMovePlayer();
         FindObjectOfType<LevelGenerator>().generate();
-        GameObject.Find("Player").transform.position = Vector3.zero;
+        PlayerStats.CurrentHealth = PlayerStats.MaxHealth;
     }
 }

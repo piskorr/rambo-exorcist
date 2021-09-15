@@ -39,7 +39,7 @@ public class EnemyShooterBehaviour : EnemyBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0,0, Mathf.Atan2(target.position.y-transform.position.y, target.position.x - transform.position.x)));
         bullet.GetComponent<BulletHandler>().setDmg(damage);
-        Vector3 velocity = target.position - transform.position;
+        Vector3 velocity = target.position - firePoint.position;
         Rigidbody2D rigidbody2D = bullet.GetComponent<Rigidbody2D>();
         rigidbody2D.AddForce(velocity * bulletForce);
     }

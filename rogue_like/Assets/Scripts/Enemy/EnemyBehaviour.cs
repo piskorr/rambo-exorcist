@@ -66,7 +66,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     internal void GetBlastDamage()
     {
-        Destroy(gameObject);
+        Defeat();
     }
 
     protected void Move()

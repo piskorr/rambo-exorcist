@@ -10,6 +10,7 @@ public class LevelGenerator : MonoBehaviour
     public int gridX, gridY, numberOfRooms;
     public GameObject shop;
     public GameObject boss;
+    public GameObject[] enemies;
 
     GameObject[,] RoomMap;
     int[,] map;
@@ -85,30 +86,30 @@ public class LevelGenerator : MonoBehaviour
         int row = index.Item1;
         int column = index.Item2;
 
-        if(row!= gridY-1)
-        if (map[row + 1, column] == 1)
-        {
-            Destroy(RoomMap[index.Item1, index.Item2]);
-            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyT, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
-        }
-        if (column != 0)
-            if (map[row, column - 1] == 1)
-        {
-            Destroy(RoomMap[index.Item1, index.Item2]);
-            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
-        }
-        if (column != gridX-1)
-            if (map[row, column + 1] == 1)
-        {
-            Destroy(RoomMap[index.Item1, index.Item2]);
-            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
-        }
-        if (row != 0)
-            if (map[row - 1, column] == 1)
-        {
-            Destroy(RoomMap[index.Item1, index.Item2]);
-            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
-        }
+        //if(row!= gridY-1)
+        //    if (map[row + 1, column] == 1)
+        //{
+        //    Destroy(RoomMap[index.Item1, index.Item2]);
+        //    RoomMap[index.Item1, index.Item2] = Instantiate(EmptyT, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        //}
+        //if (column != 0)
+        //    if (map[row, column - 1] == 1)
+        //{
+        //    Destroy(RoomMap[index.Item1, index.Item2]);
+        //    RoomMap[index.Item1, index.Item2] = Instantiate(EmptyL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        //}
+        //if (column != gridX-1)
+        //    if (map[row, column + 1] == 1)
+        //{
+        //    Destroy(RoomMap[index.Item1, index.Item2]);
+        //    RoomMap[index.Item1, index.Item2] = Instantiate(EmptyR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        //}
+        //if (row != 0)
+        //    if (map[row - 1, column] == 1)
+        //{
+        //    Destroy(RoomMap[index.Item1, index.Item2]);
+        //    RoomMap[index.Item1, index.Item2] = Instantiate(EmptyB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        //}
         roomSpawner = RoomMap[index.Item1, index.Item2].GetComponent(typeof(RoomEnemySpawner)) as RoomEnemySpawner;
         roomSpawner.shop = shop;
     }
@@ -120,38 +121,48 @@ public class LevelGenerator : MonoBehaviour
         int centerY = gridY / 2;
         RoomEnemySpawner roomSpawner;
         (int, int) index;
+        int iterations = 0;
         do
         {
+            iterations++;
             index = selectiveRoomIndex();
             roomSpawner = RoomMap[index.Item1, index.Item2].GetComponent(typeof(RoomEnemySpawner)) as RoomEnemySpawner;
-        } while (roomSpawner.shop != null);
+        } while (roomSpawner.shop != null && iterations < numberOfRooms);
+        if(roomSpawner.shop != null)
+        {
+            do
+            {
+                index = randomRoomIndex();
+                roomSpawner = RoomMap[index.Item1, index.Item2].GetComponent(typeof(RoomEnemySpawner)) as RoomEnemySpawner;
+            } while (roomSpawner.shop != null );
+        }
         int row = index.Item1;
         int column = index.Item2;
 
-        if (row != gridY - 1)
-            if (map[row+1, column] == 1)
-        {
-            Destroy(RoomMap[index.Item1, index.Item2]);
-            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyT, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
-        }
-        if (column != 0)
-            if (map[row, column-1] == 1)
-        {
-            Destroy(RoomMap[index.Item1, index.Item2]);
-            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
-        }
-        if (column != gridX - 1)
-            if (map[row, column+1] == 1)
-        {
-            Destroy(RoomMap[index.Item1, index.Item2]);
-            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
-        }
-        if (row != 0)
-            if (map[row-1, column] == 1)
-        {
-            Destroy(RoomMap[index.Item1, index.Item2]);
-            RoomMap[index.Item1, index.Item2] = Instantiate(EmptyB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
-        }
+        //if (row != gridY - 1)
+        //    if (map[row+1, column] == 1)
+        //{
+        //    Destroy(RoomMap[index.Item1, index.Item2]);
+        //    RoomMap[index.Item1, index.Item2] = Instantiate(EmptyT, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        //}
+        //if (column != 0)
+        //    if (map[row, column-1] == 1)
+        //{
+        //    Destroy(RoomMap[index.Item1, index.Item2]);
+        //    RoomMap[index.Item1, index.Item2] = Instantiate(EmptyL, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        //}
+        //if (column != gridX - 1)
+        //    if (map[row, column+1] == 1)
+        //{
+        //    Destroy(RoomMap[index.Item1, index.Item2]);
+        //    RoomMap[index.Item1, index.Item2] = Instantiate(EmptyR, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        //}
+        //if (row != 0)
+        //    if (map[row-1, column] == 1)
+        //{
+        //    Destroy(RoomMap[index.Item1, index.Item2]);
+        //    RoomMap[index.Item1, index.Item2] = Instantiate(EmptyB, new Vector3(transform.position.x + (column - centerX) * roomDistanceX, transform.position.y + (row - centerY) * roomDistanceY, transform.position.z), Quaternion.identity);
+        //}
         roomSpawner = RoomMap[index.Item1, index.Item2].GetComponent(typeof(RoomEnemySpawner)) as RoomEnemySpawner;
         roomSpawner.boss = boss;
 
@@ -440,6 +451,7 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
+        RoomMap[row, column].GetComponent<RoomEnemySpawner>().enemies = enemies;
     }
 
     (int, int) randomIndex()
@@ -483,39 +495,8 @@ public class LevelGenerator : MonoBehaviour
         {
             index = randomRoomIndex();
             iterations++;
-        } while (numOfNeighbours(index.Item1, index.Item2) > 1);
-
-        if (index != (-1, -1))
-            return index;
-
-        iterations = 0;
-        do
-        {
-            index = randomRoomIndex();
-            iterations++;
-        } while ((index == (-1, -1) || numOfNeighbours(index.Item1, index.Item2) > 2) && iterations < gridY * gridX / 6);
-
-        if (index != (-1, -1))
-            return index;
-
-        iterations = 0;
-        do
-        {
-            index = randomRoomIndex();
-            iterations++;
-        } while ((index == (-1, -1) || numOfNeighbours(index.Item1, index.Item2) > 3) && iterations < gridY * gridX / 3);
-
-        if (index != (-1, -1))
-            return index;
-
-        iterations = 0;
-        do
-        {
-            index = randomRoomIndex();
-            iterations++;
-        } while (index == (-1, -1) && iterations < gridY * gridX);
-
-        if (index != (-1, -1))
+        } while (numOfNeighbours(index.Item1, index.Item2) > 1 && iterations<numberOfRooms*3);
+        if (numOfNeighbours(index.Item1, index.Item2) == 1)
             return index;
         else
             return randomRoomIndex();
@@ -633,8 +614,8 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
-        spawnBoss();
         spawnShop();
+        spawnBoss();
 
         for (int i = 0; i < gridY; i++)
         {
@@ -654,16 +635,11 @@ public class LevelGenerator : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        GameObject.Find("Player").transform.position = new Vector3(0, 0, 0);
     }
     void Start()
     {
         generate();
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

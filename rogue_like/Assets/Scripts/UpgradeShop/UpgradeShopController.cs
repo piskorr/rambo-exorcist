@@ -21,13 +21,13 @@ public class UpgradeShopController : MonoBehaviour
     [SerializeField]
     private Text UpgradeText3;
 
-    public int UpgradeValue3 = 1;
+    public int UpgradeValue3 = 10;
 
     [SerializeField]
     private Text CoinText;
 
     [SerializeField]
-    private int UpgradeCost = 3;
+    private int UpgradeCost = 10;
 
 
     // Start is called before the first frame update
@@ -71,6 +71,7 @@ public class UpgradeShopController : MonoBehaviour
         if (TryBuyUpgrade())
         {
             PlayerStats.MaxHealth += UpgradeValue3;
+            PlayerStats.CurrentHealth += UpgradeValue3;
             UpgradeText3.text = PlayerStats.MaxHealth.ToString();
         }
     }

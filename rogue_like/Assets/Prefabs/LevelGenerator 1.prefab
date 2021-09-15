@@ -71,6 +71,9 @@ MonoBehaviour:
     type: 3}
   gridX: 10
   gridY: 10
-  numberOfRooms: 30
-  shop: {fileID: 1031807910962381699, guid: 2296b8371e9813741be65dd4852cea6c, type: 3}
-  boss: {fileID: 0}
+  numberOfRooms: 6
+  shop: {fileID: 6861625773048379974, guid: 8380d93008d47694884b6387988d5e24, type: 3}
+  boss: {fileID: 7642738029495285378, guid: 8f438e4e445db1749a5e099f54471987, type: 3}
+  enemies:
+  - {fileID: 8197527448178566159, guid: c321ca36be3f44b468949a954090f4de, type: 3}
+  - {fileID: 962447109097914353, guid: a6566ac300f230647b8d4d59e27448b7, type: 3}

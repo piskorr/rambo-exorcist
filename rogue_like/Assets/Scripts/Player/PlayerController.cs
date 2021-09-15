@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.MovePosition(transform.position + characterMovement * PlayerStats.MovementSpeed * Time.deltaTime);
     }
 
-
     private void FlipCharacter()
 	{
 		characterFacingRight = !characterFacingRight;
@@ -91,8 +90,11 @@ public class PlayerController : MonoBehaviour
         {
             lastDmgTime = Time.time;
             PlayerStats.CurrentHealth -= 10;
-            if(PlayerStats.CurrentHealth<=0)
+            if (PlayerStats.CurrentHealth <= 0)
+            {
+                FindObjectOfType<LevelGenerator>().destroyChildrensMovePlayer();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            }
         }
     }
 }

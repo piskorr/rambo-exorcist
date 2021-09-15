@@ -1492,9 +1492,9 @@ MonoBehaviour:
   UpgradeText2: {fileID: 4272116107966578806}
   UpgradeValue2: 1
   UpgradeText3: {fileID: 4272116108913687066}
-  UpgradeValue3: 1
+  UpgradeValue3: 10
   CoinText: {fileID: 6831037291872581884}
-  UpgradeCost: 3
+  UpgradeCost: 5
 --- !u!1 &4272116108913687070
 GameObject:
   m_ObjectHideFlags: 0
