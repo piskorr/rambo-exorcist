@@ -751,7 +751,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 3042260362849062342}
   m_Layer: 0
   m_Name: Walls_front
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4017,7 +4017,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4038,7 +4038,7 @@ GameObject:
   - component: {fileID: 134031025926328051}
   - component: {fileID: 4187693008546610348}
   m_Layer: 0
-  m_Name: L
+  m_Name: LR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4091,6 +4091,9 @@ MonoBehaviour:
   spawnArea: {x: 8, y: 8}
   enemyMaxNumber: 10
   enemyMinNumber: 5
+  shop: {fileID: 0}
+  boss: {fileID: 0}
+  is5tarting: 0
 --- !u!1001 &275677189750200973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4181,7 +4184,7 @@ PrefabInstance:
     - target: {fileID: 1125639631717155128, guid: 72ca3cdf094caf94aa20ac3115b3fdd9,
         type: 3}
       propertyPath: m_SortingLayer
-      value: -2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1125639631717155128, guid: 72ca3cdf094caf94aa20ac3115b3fdd9,
         type: 3}

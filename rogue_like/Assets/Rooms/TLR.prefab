@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 8780446557424580374}
   m_Layer: 0
   m_Name: Walls_front
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1224,6 +1224,9 @@ MonoBehaviour:
   spawnArea: {x: 8, y: 8}
   enemyMaxNumber: 10
   enemyMinNumber: 5
+  shop: {fileID: 0}
+  boss: {fileID: 0}
+  is5tarting: 0
 --- !u!1 &4723876444715755160
 GameObject:
   m_ObjectHideFlags: 0
