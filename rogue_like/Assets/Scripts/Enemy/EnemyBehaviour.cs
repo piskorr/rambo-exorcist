@@ -29,7 +29,7 @@ public class EnemyBehaviour : MonoBehaviour
     protected virtual void Awake()
     {
         health = maxHealth;
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().transform;
+        target = GameObject.Find("Player").GetComponent<BoxCollider2D>().transform;
     }
 
     // Update is called once per frame

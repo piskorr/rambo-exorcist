@@ -18,7 +18,7 @@ public class BossBehaviour : EnemyShooterBehaviour
     {
         health = maxHealth;
         healthBar.SetMaxhealth(maxHealth);
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().transform;
+        target = GameObject.Find("Player").GetComponent<BoxCollider2D>().transform;
     }
 
     protected override void EnemyLogic()
